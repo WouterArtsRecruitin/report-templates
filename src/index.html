@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#FF6B35">
+    <title>RecruitPro APK - Recruitment Intelligence for Your Pocket</title>
+    <meta name="description" content="Analyseer en optimaliseer je recruitment processen in 30 seconden met de RecruitPro APK app">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="favicon.ico">
+    <link rel="apple-touch-icon" href="icon-192x192.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header Module -->
+        <header class="header">
+            <div class="container">
+                <div class="logo-section">
+                    <div class="logo" role="img" aria-label="RecruitPro Logo">R</div>
+                    <div class="brand-info">
+                        <div class="company-name">RECRUITPRO APK</div>
+                        <div class="tagline">Recruitment Intelligence for Your Pocket</div>
+                    </div>
+                </div>
+                
+                <div class="intro-text">
+                    Analyseer en optimaliseer je recruitment processen in 30 seconden. 
+                    Krijg direct inzicht in je metrics, benchmarks en verbetermogelijkheden - waar je ook bent.
+                </div>
+                
+                <button class="btn primary start-assessment" id="start-assessment" aria-label="Start het recruitment assessment">
+                    <span>🚀</span>
+                    Start Assessment
+                </button>
+            </div>
+        </header>
+
+        <!-- Progress Container (initially hidden) -->
+        <div class="progress-container" id="progress-container" style="display: none;" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+            <div class="container">
+                <div class="progress-header">
+                    <div class="progress-title" id="progress-title">Assessment Vragen</div>
+                    <div class="progress-counter" id="progress-counter">1 / 10</div>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+                <div class="phase-indicators">
+                    <div class="phase-indicator active" id="phase-1">
+                        <div class="phase-dot"></div>
+                        <span>Analyse</span>
+                    </div>
+                    <div class="phase-indicator" id="phase-2">
+                        <div class="phase-dot"></div>
+                        <span>Strategie</span>
+                    </div>
+                    <div class="phase-indicator" id="phase-3">
+                        <div class="phase-dot"></div>
+                        <span>Resultaten</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Assessment Interface (initially hidden) -->
+        <main class="assessment-interface" id="assessment-interface" style="display: none;" role="main">
+            <!-- Content will be dynamically loaded here -->
+        </main>
+
+        <!-- Results Section (initially hidden) -->
+        <section class="results-section" id="results-section" style="display: none;">
+            <!-- Results will be dynamically generated here -->
+        </section>
+    </div>
+</body>
+</html>

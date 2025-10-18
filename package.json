@@ -1,0 +1,58 @@
+{
+  "name": "recruitmentapk-automation",
+  "version": "1.0.0",
+  "description": "RecruitmentAPK Automation Framework",
+  "main": "index.js",
+  "scripts": {
+    "start": "ts-node src/recruitmentapk-automation-master.ts",
+    "dev": "ts-node-dev --respawn src/recruitmentapk-automation-master.ts",
+    "api": "ts-node src/api/server.ts",
+    "api:dev": "ts-node-dev --respawn src/api/server.ts",
+    "build": "tsc",
+    "execute:development": "ts-node src/recruitmentapk-automation-master.ts",
+    "execute:production": "NODE_ENV=production ts-node src/recruitmentapk-automation-master.ts",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "design-audit": "node scripts/design-improvement.js",
+    "design-sync": "npm run design-audit && echo 'Design tokens synchronized'",
+    "accessibility-test": "echo 'Running accessibility audit...' && npm run design-audit",
+    "design-report": "npm run design-audit && open design-improvement-report.md"
+  },
+  "keywords": [
+    "recruitment",
+    "automation",
+    "typescript"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@canva/app-eslint-plugin": "^1.0.0-beta.3",
+    "@canva/app-i18n-kit": "^1.0.3",
+    "@canva/app-ui-kit": "^4.10.0",
+    "@hookform/resolvers": "^5.1.1",
+    "axios": "^1.11.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "framer-motion": "^12.23.6",
+    "nodemailer": "^7.0.5",
+    "react-hook-form": "^7.60.0",
+    "yargs": "^17.7.2",
+    "zod": "^4.0.5"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.3",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^20.14.2",
+    "@types/supertest": "^6.0.3",
+    "@types/yargs": "^17.0.24",
+    "jest": "^30.2.0",
+    "supertest": "^7.1.4",
+    "ts-jest": "^29.4.5",
+    "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.4.5"
+  }
+}
