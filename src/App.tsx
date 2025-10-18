@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
 import { DemoReport } from './components/DemoReport';
+import { CheckoutModal } from './components/CheckoutModal';
 import { generateReportData } from './utils/reportDataGenerator';
+import { PDFGenerator } from './utils/pdfGenerator';
+import { ReportData } from './types/report';
 
 export default function App() {
   const [version, setVersion] = useState<'a' | 'b' | 'c'>('a');
+  const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
+  const [selectedReport, setSelectedReport] = useState<ReportData | null>(null);
 
   // Generate different data sets for A/B/C testing
   const reportDataA = generateReportData({
@@ -26,6 +31,25 @@ export default function App() {
     region: "Nederland",
     companyName: "Professional Reports"
   });
+
+  const handleOrderClick = (reportData: ReportData) => {
+    setSelectedReport(reportData);
+    setIsCheckoutOpen(true);
+  };
+
+  const handlePaymentSuccess = async (reportData: ReportData) => {
+    // Generate and download both PDF and text versions
+    try {
+      await PDFGenerator.generateReport(reportData);
+      await PDFGenerator.downloadReport(reportData);
+      
+      // Show success message
+      alert(`Succes! Je ${reportData.config.title} rapport is gedownload in PDF én tekst formaat.`);
+    } catch (error) {
+      console.error('Download failed:', error);
+      alert('Er is een probleem opgetreden bij het downloaden. Neem contact op met support.');
+    }
+  };
 
   return (
     <div className="min-h-screen bg-slate-50">
@@ -86,6 +110,7 @@ export default function App() {
                 price: reportDataA.config.price
               });
             }
+            handleOrderClick(reportDataA);
           }}
         />
       )}
@@ -105,6 +130,7 @@ export default function App() {
                 price: reportDataB.config.price
               });
             }
+            handleOrderClick(reportDataB);
           }}
         />
       )}
@@ -124,7 +150,21 @@ export default function App() {
                 price: reportDataC.config.price
               });
             }
+            handleOrderClick(reportDataC);
           }}
+        />
+      )}
+
+      {/* Checkout Modal */}
+      {selectedReport && (
+        <CheckoutModal
+          isOpen={isCheckoutOpen}
+          onClose={() => {
+            setIsCheckoutOpen(false);
+            setSelectedReport(null);
+          }}
+          reportData={selectedReport}
+          onPaymentSuccess={handlePaymentSuccess}
         />
       )}
     </div>
