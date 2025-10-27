@@ -1,13 +1,14 @@
 {
   "compilerOptions": {
     "target": "ES2020",
-    "lib": ["ES2020"],
-    "module": "commonjs",
-    "moduleResolution": "node",
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "allowJs": true,
+    "jsx": "react-jsx",
     "outDir": "./dist",
     "rootDir": "./src",
     "strict": true,
@@ -19,24 +20,24 @@
     "noUncheckedIndexedAccess": false,
     "noImplicitOverride": true,
     "exactOptionalPropertyTypes": false,
-    "declaration": true,
-    "declarationMap": true,
+    "declaration": false,
+    "declarationMap": false,
     "sourceMap": true,
     "removeComments": false,
     "importHelpers": true,
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "allowImportingTsExtensions": true,
+    "isolatedModules": true,
+    "noEmit": true
   },
   "include": [
-    "src/**/*"
+    "src/**/*",
+    "index.html"
   ],
   "exclude": [
     "node_modules",
     "dist",
-    "coverage",
-    "**/*.test.ts",
-    "**/*.spec.ts"
+    "coverage"
   ]
 }

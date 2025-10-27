@@ -54,7 +54,11 @@ export function ProfessionalReportExample() {
       reportId: "TECH-2025-001",
       companyName: "Internal Research",
       totalPages: 60,
-      reliabilityScore: 98.5
+      reliabilityScore: 98.5,
+      date: new Date().toLocaleDateString('nl-NL'),
+      previewPages: 3,
+      price: 497,
+      currency: "EUR"
     },
     metrics: {
       activeOpenings: 3200,

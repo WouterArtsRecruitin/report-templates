@@ -6,17 +6,6 @@
     <title>Professional Report Templates - Market Intelligence</title>
     <meta name="description" content="Professional market intelligence report templates with demo and full versions. Generate beautiful, print-ready reports instantly.">
     
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Recharts for React charts -->
-    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-    <script src="https://unpkg.com/recharts@2.8.0/esm/index.js" type="module"></script>
-    
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
-    
     <style>
         /* Print optimizations */
         @media print {
@@ -30,39 +19,21 @@
                 line-height: 1.4;
             }
             
-            .print\\:hidden {
+            .print\:hidden {
                 display: none !important;
             }
             
-            .print\\:page-break-after-always {
+            .print\:page-break-after-always {
                 page-break-after: always;
             }
             
-            .print\\:bg-white {
+            .print\:bg-white {
                 background-color: white !important;
             }
             
-            .print\\:text-black {
+            .print\:text-black {
                 color: black !important;
             }
-        }
-        
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        
-        ::-webkit-scrollbar-track {
-            background: #f1f5f9;
-        }
-        
-        ::-webkit-scrollbar-thumb {
-            background: #64748b;
-            border-radius: 4px;
-        }
-        
-        ::-webkit-scrollbar-thumb:hover {
-            background: #475569;
         }
         
         /* Loading animations */
@@ -73,202 +44,10 @@
         .animate-spin {
             animation: spin 1s linear infinite;
         }
-        
-        /* Custom gradients */
-        .gradient-blue {
-            background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);
-        }
-        
-        .gradient-green {
-            background: linear-gradient(135deg, #059669 0%, #047857 100%);
-        }
-        
-        /* Chart container */
-        .recharts-container {
-            font-family: inherit;
-        }
     </style>
 </head>
-<body class="bg-slate-50 font-sans antialiased">
-    <!-- Navigation -->
-    <nav class="bg-white border-b border-slate-200 sticky top-0 z-50 print:hidden">
-        <div class="max-w-7xl mx-auto px-6 py-4">
-            <div class="flex items-center justify-between">
-                <div class="flex items-center gap-3">
-                    <div class="w-8 h-8 bg-slate-900 rounded flex items-center justify-center">
-                        <span class="text-white text-sm">📊</span>
-                    </div>
-                    <div class="text-lg font-semibold text-slate-900">Report Templates</div>
-                </div>
-                <div class="flex gap-4">
-                    <a href="#demo" class="text-slate-600 hover:text-slate-900">Demo</a>
-                    <a href="#features" class="text-slate-600 hover:text-slate-900">Features</a>
-                    <a href="#test" class="text-slate-600 hover:text-slate-900">Test Suite</a>
-                </div>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="py-20 print:hidden">
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            <h1 class="text-5xl font-bold text-slate-900 mb-6">
-                Professional Market Intelligence
-                <span class="text-blue-600">Report Templates</span>
-            </h1>
-            <p class="text-xl text-slate-600 mb-8 max-w-2xl mx-auto">
-                Generate beautiful, print-ready market intelligence reports instantly. 
-                Complete with checkout flow, PDF generation, and professional styling.
-            </p>
-            <div class="flex gap-4 justify-center">
-                <a href="#demo" class="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors">
-                    View Live Demo
-                </a>
-                <a href="https://github.com/WouterArtsRecruitin/report-templates" target="_blank" 
-                   class="border border-slate-300 text-slate-700 px-8 py-3 rounded-lg hover:bg-slate-50 transition-colors">
-                    View Source Code
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Features Grid -->
-    <section id="features" class="py-16 bg-white print:hidden">
-        <div class="max-w-6xl mx-auto px-6">
-            <h2 class="text-3xl font-bold text-slate-900 text-center mb-12">Complete Report Solution</h2>
-            
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="text-center p-6">
-                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <span class="text-2xl">🎨</span>
-                    </div>
-                    <h3 class="text-xl font-semibold text-slate-900 mb-3">Professional Design</h3>
-                    <p class="text-slate-600">Clean, modern templates with blue accents and print-optimized layouts</p>
-                </div>
-                
-                <div class="text-center p-6">
-                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <span class="text-2xl">⚡</span>
-                    </div>
-                    <h3 class="text-xl font-semibold text-slate-900 mb-3">Smart Data Generation</h3>
-                    <p class="text-slate-600">Automatic generation of realistic market data, salary ranges, and competitor analysis</p>
-                </div>
-                
-                <div class="text-center p-6">
-                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <span class="text-2xl">💳</span>
-                    </div>
-                    <h3 class="text-xl font-semibold text-slate-900 mb-3">Complete Checkout Flow</h3>
-                    <p class="text-slate-600">Full payment simulation with PDF generation and download functionality</p>
-                </div>
-                
-                <div class="text-center p-6">
-                    <div class="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <span class="text-2xl">🖨️</span>
-                    </div>
-                    <h3 class="text-xl font-semibold text-slate-900 mb-3">Print Ready</h3>
-                    <p class="text-slate-600">A4 optimized layouts with proper page breaks and print styling</p>
-                </div>
-                
-                <div class="text-center p-6">
-                    <div class="w-16 h-16 bg-rose-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <span class="text-2xl">📊</span>
-                    </div>
-                    <h3 class="text-xl font-semibold text-slate-900 mb-3">Interactive Charts</h3>
-                    <p class="text-slate-600">Beautiful charts with Recharts integration and professional styling</p>
-                </div>
-                
-                <div class="text-center p-6">
-                    <div class="w-16 h-16 bg-cyan-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <span class="text-2xl">🧪</span>
-                    </div>
-                    <h3 class="text-xl font-semibold text-slate-900 mb-3">A/B/C Testing</h3>
-                    <p class="text-slate-600">Built-in variants for conversion optimization with analytics tracking</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Demo Section -->
-    <section id="demo" class="py-16 bg-slate-50">
-        <div class="max-w-7xl mx-auto px-6">
-            <h2 class="text-3xl font-bold text-slate-900 text-center mb-4">Live Demo</h2>
-            <p class="text-slate-600 text-center mb-12 max-w-2xl mx-auto">
-                Test the complete flow: browse report preview, click download, go through checkout, 
-                and receive both PDF and text versions.
-            </p>
-            
-            <!-- React App will be mounted here -->
-            <div id="app"></div>
-        </div>
-    </section>
-
-    <!-- Test Suite Section -->
-    <section id="test" class="py-16 bg-white print:hidden">
-        <div class="max-w-4xl mx-auto px-6">
-            <h2 class="text-3xl font-bold text-slate-900 text-center mb-4">Automated Test Suite</h2>
-            <p class="text-slate-600 text-center mb-12">
-                Comprehensive testing of all components, data generation, PDF creation, and functionality.
-            </p>
-            
-            <!-- Test Suite will be mounted here -->
-            <div id="test-suite"></div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-slate-900 text-white py-12 print:hidden">
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            <div class="flex items-center justify-center gap-3 mb-6">
-                <div class="w-10 h-10 bg-white/20 rounded flex items-center justify-center">
-                    <span class="text-lg">📊</span>
-                </div>
-                <div class="text-xl font-semibold">Professional Report Templates</div>
-            </div>
-            <p class="text-slate-400 mb-6">
-                Complete market intelligence report solution with checkout flow, PDF generation, 
-                and professional styling. Ready for production deployment.
-            </p>
-            <div class="flex gap-6 justify-center text-sm">
-                <a href="https://github.com/WouterArtsRecruitin/report-templates" target="_blank" 
-                   class="text-slate-300 hover:text-white">
-                    GitHub Repository
-                </a>
-                <a href="https://www.netlify.com" target="_blank" 
-                   class="text-slate-300 hover:text-white">
-                    Deploy to Netlify
-                </a>
-            </div>
-            <div class="mt-8 pt-8 border-t border-slate-800 text-sm text-slate-500">
-                © 2025 Recruitin Intelligence. Made with React, TypeScript & Tailwind CSS.
-            </div>
-        </div>
-    </footer>
-
-    <!-- React Application Scripts -->
-    <script type="module">
-        // This would normally be bundled with Webpack/Vite
-        // For demo purposes, the components would be loaded here
-        console.log('Report Templates Demo Ready');
-        
-        // Show loading message
-        document.getElementById('app').innerHTML = `
-            <div class="text-center py-20">
-                <div class="w-16 h-16 border-4 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-                <p class="text-slate-600">Loading Report Demo...</p>
-                <p class="text-sm text-slate-500 mt-2">In production, this would load the React components</p>
-            </div>
-        `;
-        
-        document.getElementById('test-suite').innerHTML = `
-            <div class="text-center py-12 border-2 border-dashed border-slate-300 rounded-lg">
-                <div class="w-12 h-12 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span class="text-xl">🧪</span>
-                </div>
-                <p class="text-slate-600 mb-2">Test Suite Ready</p>
-                <p class="text-sm text-slate-500">Run with: npm test or yarn test</p>
-            </div>
-        `;
-    </script>
+<body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
 </body>
 </html>

@@ -7,69 +7,17 @@ import {
   TrendingDown,
   Clock,
   Printer,
-  Download,
-  Lock,
-  CheckCircle2,
-  AlertCircle,
-  Award,
-  Target
+  Download
 } from 'lucide-react';
 import { Button } from './ui/button';
-import { 
-  BarChart, 
-  Bar, 
-  XAxis, 
-  YAxis, 
-  CartesianGrid, 
-  Tooltip, 
-  ResponsiveContainer,
-  Cell,
-  LineChart,
-  Line,
-  Area,
-  AreaChart
-} from 'recharts';
-import { ReportProps } from '../types/report';
 
-const demandTrendData = [
-  { month: 'Apr', openings: 1820 },
-  { month: 'Mei', openings: 2150 },
-  { month: 'Jun', openings: 2380 },
-  { month: 'Jul', openings: 2590 },
-  { month: 'Aug', openings: 2680 },
-  { month: 'Sep', openings: 2847 },
-];
-
-const salaryDistributionData = [
-  { range: '45-50k', count: 180 },
-  { range: '50-55k', count: 420 },
-  { range: '55-60k', count: 680 },
-  { range: '60-65k', count: 890 },
-  { range: '65-70k', count: 950 },
-  { range: '70-75k', count: 720 },
-  { range: '75-80k', count: 450 },
-  { range: '80k+', count: 280 },
-];
-
-const competitorData = [
-  { company: 'Booking.com', openings: 47, avgSalary: 72, growth: '+12%' },
-  { company: 'Adyen', openings: 34, avgSalary: 76, growth: '+8%' },
-  { company: 'Coolblue', openings: 28, avgSalary: 65, growth: '+15%' },
-  { company: 'Bol.com', openings: 31, avgSalary: 68, growth: '+6%' },
-  { company: 'ING', openings: 25, avgSalary: 71, growth: '+4%' },
-];
-
-export function ReportTemplate({ data, variant, onOrderClick, showPrintControls = true }: ReportProps) {
-  const scrollToOrder = () => {
-    if (onOrderClick) {
-      onOrderClick();
-    } else {
-      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-    }
-  };
-
+export function ReportPreviewA() {
   const handlePrint = () => {
     window.print();
+  };
+
+  const scrollToOrder = () => {
+    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
   };
 
   return (
@@ -77,20 +25,7 @@ export function ReportTemplate({ data, variant, onOrderClick, showPrintControls 
       {/* Print Actions Bar */}
       <div className="print:hidden sticky top-0 z-40 bg-white border-b border-gray-200 py-4">
         <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
-          <div className="flex items-center gap-8">
-            <div className="text-sm text-gray-600">A/B/C Test Varianten</div>
-            <div className="flex gap-2">
-              <button className="px-4 py-2 text-sm bg-slate-800 text-white rounded">
-                Versie A - Classic Report
-              </button>
-              <button className="px-4 py-2 text-sm text-gray-600 hover:bg-gray-100 rounded">
-                Versie B - Interactive Dashboard
-              </button>
-              <button className="px-4 py-2 text-sm text-gray-600 hover:bg-gray-100 rounded">
-                Versie C - Printable Report
-              </button>
-            </div>
-          </div>
+          <div className="text-sm text-gray-600">Versie A - Classic Report</div>
           <div className="flex gap-2">
             <Button 
               variant="outline" 
@@ -238,108 +173,16 @@ export function ReportTemplate({ data, variant, onOrderClick, showPrintControls 
             </div>
           </div>
 
-          {/* Charts Section */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-            {/* Demand Trend Chart */}
-            <div className="bg-white border border-gray-200 rounded-lg p-6">
-              <h4 className="text-lg text-slate-800 mb-4">Vraag Ontwikkeling (6 maanden)</h4>
-              <ResponsiveContainer width="100%" height={240}>
-                <AreaChart data={demandTrendData}>
-                  <defs>
-                    <linearGradient id="colorGradient" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.3}/>
-                      <stop offset="95%" stopColor="#3b82f6" stopOpacity={0}/>
-                    </linearGradient>
-                  </defs>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
-                  <XAxis 
-                    dataKey="month" 
-                    tick={{ fontSize: 12, fill: '#64748b' }} 
-                    axisLine={{ stroke: '#cbd5e1' }}
-                  />
-                  <YAxis 
-                    tick={{ fontSize: 12, fill: '#64748b' }} 
-                    axisLine={{ stroke: '#cbd5e1' }}
-                  />
-                  <Tooltip 
-                    contentStyle={{ 
-                      backgroundColor: '#fff', 
-                      border: '1px solid #e2e8f0',
-                      borderRadius: '8px',
-                      boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
-                    }}
-                  />
-                  <Area 
-                    type="monotone" 
-                    dataKey="openings" 
-                    stroke="#3b82f6" 
-                    strokeWidth={2}
-                    fill="url(#colorGradient)"
-                  />
-                </AreaChart>
-              </ResponsiveContainer>
-            </div>
-
-            {/* Salary Distribution Chart */}
-            <div className="bg-white border border-gray-200 rounded-lg p-6">
-              <h4 className="text-lg text-slate-800 mb-4">Salaris Distributie (n=4,570)</h4>
-              <ResponsiveContainer width="100%" height={240}>
-                <BarChart data={salaryDistributionData}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
-                  <XAxis 
-                    dataKey="range" 
-                    tick={{ fontSize: 12, fill: '#64748b' }} 
-                    axisLine={{ stroke: '#cbd5e1' }}
-                  />
-                  <YAxis 
-                    tick={{ fontSize: 12, fill: '#64748b' }} 
-                    axisLine={{ stroke: '#cbd5e1' }}
-                  />
-                  <Tooltip 
-                    contentStyle={{ 
-                      backgroundColor: '#fff', 
-                      border: '1px solid #e2e8f0',
-                      borderRadius: '8px',
-                      boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
-                    }}
-                  />
-                  <Bar dataKey="count" radius={[4, 4, 0, 0]}>
-                    {salaryDistributionData.map((entry, index) => (
-                      <Cell 
-                        key={`cell-${index}`} 
-                        fill={index === 4 ? '#8b5cf6' : '#e2e8f0'} 
-                      />
-                    ))}
-                  </Bar>
-                </BarChart>
-              </ResponsiveContainer>
-            </div>
-          </div>
-
-          {/* Download Section */}
+          {/* Simple Download Section */}
           <div className="bg-gray-50 border border-gray-200 rounded-lg p-12 text-center">
-            <div className="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center mx-auto mb-6">
-              <Lock className="w-8 h-8 text-gray-600" />
-            </div>
-            <h3 className="text-2xl text-slate-800 mb-4">Nog 30 pagina's diepgaande analyse</h3>
-            <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
-              Het volledige rapport bevat uitgebreide strategische aanbevelingen, geografische heatmaps, 
-              skills matrices, channel ROI analyses en 12-maanden forecasts met scenario planning.
+            <h3 className="text-2xl text-slate-800 mb-4">Download Volledig Rapport</h3>
+            <p className="text-gray-600 mb-8">
+              32 pagina's met complete analyse, strategische aanbevelingen en markt insights.
             </p>
             
             <div className="bg-white rounded-lg shadow-sm p-8 inline-block mb-8">
               <div className="text-4xl text-slate-800 mb-2">€59</div>
               <div className="text-gray-600 mb-4">Eenmalige investering • Lifetime toegang</div>
-              <div className="flex items-center justify-center gap-4 text-sm text-gray-500">
-                <div className="flex items-center gap-1">
-                  <CheckCircle2 className="w-4 h-4 text-green-600" />
-                  PDF + Print formaat
-                </div>
-                <div className="flex items-center gap-1">
-                  <CheckCircle2 className="w-4 h-4 text-green-600" />
-                  30 dagen updates
-                </div>
-              </div>
             </div>
 
             <div>
@@ -349,7 +192,7 @@ export function ReportTemplate({ data, variant, onOrderClick, showPrintControls 
                 className="bg-blue-600 hover:bg-blue-700 px-10 py-4 text-lg"
               >
                 <Download className="w-5 h-5 mr-2" />
-                Download Volledig Rapport (32 Pagina's)
+                Download Volledig Rapport
               </Button>
             </div>
           </div>

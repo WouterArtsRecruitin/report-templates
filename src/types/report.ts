@@ -74,7 +74,7 @@ export interface ReportData {
 }
 
 export interface ReportProps {
-  data: ReportData;
+  data?: ReportData;
   variant: 'demo' | 'professional';
   onOrderClick?: () => void;
   showPrintControls?: boolean;
