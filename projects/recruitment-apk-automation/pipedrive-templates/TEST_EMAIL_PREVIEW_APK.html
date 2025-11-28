@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Email Preview - Recruitment APK</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+            margin: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #1E3A8A;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        .info-box {
+            background: #E8F5E9;
+            border-left: 4px solid #4CAF50;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 4px;
+        }
+        .email-preview {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+        }
+        .email-header {
+            background: #1E3A8A;
+            color: white;
+            padding: 15px 20px;
+            font-size: 14px;
+        }
+        .email-subject {
+            background: #f0f0f0;
+            padding: 15px 20px;
+            border-bottom: 1px solid #ddd;
+        }
+        .email-body {
+            padding: 30px;
+        }
+        .email-body p {
+            color: #374151;
+            font-size: 15px;
+            line-height: 1.6;
+            margin: 0 0 20px;
+        }
+        .tip-box {
+            background: #FEF3C7;
+            border-left: 4px solid #F59E0B;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .tip-box h4 {
+            color: #92400E;
+            margin: 0 0 15px;
+        }
+        .tip-box p {
+            color: #78350F;
+            font-size: 14px;
+            margin: 0;
+        }
+        .cta-box {
+            background: #F3F4F6;
+            border-left: 4px solid #FF6B35;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .cta-box a {
+            color: #FF6B35;
+            font-weight: bold;
+        }
+        .footer {
+            padding: 20px;
+            background: #F9FAFB;
+            border-top: 1px solid #E5E7EB;
+        }
+        .footer p {
+            color: #9CA3AF;
+            font-size: 12px;
+            margin: 0;
+        }
+        .logo {
+            background-color: #FF6B35;
+            width: 40px;
+            height: 40px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            margin-right: 12px;
+        }
+        .logo-text {
+            color: #1E3A8A;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .stats-box {
+            background: #D1FAE5;
+            border-left: 4px solid #10B981;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .stats-box p {
+            color: #065F46;
+            font-size: 14px;
+        }
+        .separator {
+            text-align: center;
+            padding: 20px;
+            color: #999;
+        }
+        .separator hr {
+            border: none;
+            border-top: 2px dashed #ddd;
+            margin: 10px 0;
+        }
+        .config-summary {
+            background: #1E3A8A;
+            color: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin-top: 40px;
+        }
+        .config-summary h2 {
+            color: #FF6B35;
+            margin-top: 0;
+        }
+        .config-summary table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .config-summary td {
+            padding: 8px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .config-summary td:first-child {
+            font-weight: bold;
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Recruitment APK - Email Preview</h1>
+    <p class="subtitle">Test versies van de 8 emails in de nurture sequence</p>
+
+    <div class="info-box">
+        <strong>Configuratie Voltooid:</strong><br><br>
+        <strong>Pipeline:</strong> Recruitment APK (id: 2)<br>
+        <strong>Deal Stages:</strong> Nieuw → APK in Behandeling → APK Verzonden → Follow-up → Gesprek Gepland → Gewonnen/Verloren<br>
+        <strong>Email Templates:</strong> 8 templates aangemaakt (id: 63-70)<br>
+        <strong>Custom Fields:</strong> APK Verzonden Op, APK Score, Email Sequence Status, Laatste Email Verzonden, Typeform Response ID, Verbeterpunten
+    </div>
+
+    <!-- EMAIL 1 -->
+    <div class="email-preview">
+        <div class="email-header">
+            <strong>EMAIL 1</strong> | Dag 1 | Template ID: 63
+        </div>
+        <div class="email-subject">
+            <strong>Onderwerp:</strong> Je Recruitment APK - alles goed ontvangen?
+        </div>
+        <div class="email-body">
+            <div class="logo-container">
+                <div class="logo">R</div>
+                <span class="logo-text">recruitmentapk.nl</span>
+            </div>
+
+            <p>Hoi [Voornaam],</p>
+
+            <p>Gisteren stuurde ik je de Recruitment APK - de complete analyse van jullie wervingsproces.</p>
+
+            <p>Even een snelle check: is alles goed aangekomen?</p>
+
+            <p>Als je vragen hebt over je score of de aanbevelingen - reply gerust op deze mail. Ik help je graag verder.</p>
+
+            <p>Groeten,<br><strong>Wouter</strong><br><span style="color: #6B7280; font-size: 13px;">recruitmentapk.nl</span></p>
+        </div>
+        <div class="footer">
+            <p>PS: Geen verkooppraatje vandaag - gewoon even checken of alles werkt.</p>
+        </div>
+    </div>
+
+    <!-- EMAIL 4: TIP -->
+    <div class="email-preview">
+        <div class="email-header">
+            <strong>EMAIL 4</strong> | Dag 8 | Template ID: 66 | TIP: Time-to-hire
+        </div>
+        <div class="email-subject">
+            <strong>Onderwerp:</strong> Recruitment tip: Time-to-hire halveren
+        </div>
+        <div class="email-body">
+            <div class="logo-container">
+                <div class="logo">R</div>
+                <span class="logo-text">recruitmentapk.nl</span>
+            </div>
+
+            <p>Hoi [Voornaam],</p>
+
+            <p>Deze week deel ik een tip die veel bedrijven over het hoofd zien:</p>
+
+            <div class="tip-box">
+                <h4>Je time-to-hire zit niet in de selectie, maar in de voorkant</h4>
+                <p>
+                    De gemiddelde time-to-hire in Nederland is 42 dagen. Maar wist je dat 60% van die tijd opgaat aan het vinden van kandidaten - niet aan het selecteren?<br><br>
+
+                    <strong>Wat de snelste bedrijven doen:</strong><br>
+                    - Talent pools opbouwen VOOR de vacature ontstaat<br>
+                    - Hiring managers trainen op snelle besluitvorming<br>
+                    - Standaard response binnen 48 uur naar kandidaten<br><br>
+
+                    <strong>Quick win:</strong><br>
+                    Meet eens hoelang kandidaten wachten tussen sollicitatie en eerste contact. Als dat meer dan 5 dagen is, verlies je de beste mensen.
+                </p>
+            </div>
+
+            <p>Hoe snel schakelt jouw organisatie na een sollicitatie?</p>
+
+            <p>Succes deze week,<br><strong>Wouter</strong></p>
+        </div>
+        <div class="footer">
+            <p>Volgende week: Waarom de candidate experience je employer brand bepaalt</p>
+        </div>
+    </div>
+
+    <!-- EMAIL 5: CANDIDATE EXPERIENCE -->
+    <div class="email-preview">
+        <div class="email-header">
+            <strong>EMAIL 5</strong> | Dag 11 | Template ID: 67 | TIP: Candidate Experience
+        </div>
+        <div class="email-subject">
+            <strong>Onderwerp:</strong> Recruitment tip: Candidate experience als geheim wapen
+        </div>
+        <div class="email-body">
+            <div class="logo-container">
+                <div class="logo">R</div>
+                <span class="logo-text">recruitmentapk.nl</span>
+            </div>
+
+            <p>Hoi [Voornaam],</p>
+
+            <p>"We hebben een negatieve Glassdoor review gekregen van een afgewezen kandidaat."</p>
+
+            <p>Dat hoor ik vaker dan je denkt. Hier is wat de data zegt:</p>
+
+            <div class="stats-box">
+                <p>
+                    <strong>Impact van candidate experience:</strong><br><br>
+                    - 72% deelt slechte ervaringen met anderen<br>
+                    - 52% stopt met kopen bij het bedrijf na slechte ervaring<br>
+                    - 78% zou opnieuw solliciteren bij goede afwijzing<br><br>
+                    <em>Bron: Talent Board 2024</em>
+                </p>
+            </div>
+
+            <p><strong>De oplossing is simpeler dan je denkt:</strong></p>
+
+            <p>
+                - Stuur ALTIJD een persoonlijke afwijzing (geen standaardmail)<br>
+                - Geef binnen 1 week feedback na het laatste gesprek<br>
+                - Vraag afgewezen kandidaten om feedback over het proces<br>
+                - Behandel kandidaten zoals je klanten behandelt
+            </p>
+
+            <p>Groeten,<br><strong>Wouter</strong></p>
+        </div>
+        <div class="footer">
+            <p>Vragen? Reply gewoon op deze mail.</p>
+        </div>
+    </div>
+
+    <!-- EMAIL 7: GESPREK AANBOD -->
+    <div class="email-preview">
+        <div class="email-header">
+            <strong>EMAIL 7</strong> | Dag 21 | Template ID: 69 | SOFT CONVERSION
+        </div>
+        <div class="email-subject">
+            <strong>Onderwerp:</strong> Zullen we je APK samen doornemen?
+        </div>
+        <div class="email-body">
+            <div class="logo-container">
+                <div class="logo">R</div>
+                <span class="logo-text">recruitmentapk.nl</span>
+            </div>
+
+            <p>Hoi [Voornaam],</p>
+
+            <p>Het is nu drie weken geleden dat je de Recruitment APK ontving.</p>
+
+            <p>Ik ben benieuwd: heb je al stappen kunnen zetten op basis van de uitkomsten? Of ligt het rapport nog op de stapel?</p>
+
+            <div class="cta-box">
+                <p>
+                    <strong>Zullen we even bellen?</strong><br><br>
+                    Geen verkooppraatje, gewoon een kort gesprek (30 min gratis) om je APK samen door te nemen.<br><br>
+
+                    We kunnen het hebben over:<br>
+                    - De belangrijkste verbeterpunten voor [Bedrijfsnaam]<br>
+                    - Quick wins die je direct kunt implementeren<br>
+                    - Hoe je draagvlak krijgt voor recruitment verbeteringen<br><br>
+
+                    <a href="https://calendly.com/wouter-arts-/recruitment-apk-review">Plan hier een moment dat jou uitkomt →</a>
+                </p>
+            </div>
+
+            <p>Geen zin of geen tijd? Helemaal prima - reply dan gewoon even met een update. Ik hoor graag hoe het gaat.</p>
+
+            <p>Groeten,<br><strong>Wouter</strong></p>
+        </div>
+        <div class="footer">
+            <p>PS: Ik reageer ook gewoon op een reply - wat jou het makkelijkst is.</p>
+        </div>
+    </div>
+
+    <!-- CONFIGURATION SUMMARY -->
+    <div class="config-summary">
+        <h2>Pipedrive Configuratie Samenvatting</h2>
+
+        <h3 style="color: white; margin-top: 25px;">Deal Stages (Recruitment APK Pipeline)</h3>
+        <table>
+            <tr><td>Stage 1</td><td>Nieuw (id: 106) - Rotting: 3 dagen</td></tr>
+            <tr><td>Stage 2</td><td>APK in Behandeling (id: 107) - Rotting: 2 dagen</td></tr>
+            <tr><td>Stage 3</td><td>APK Verzonden (id: 108) - Rotting: 7 dagen</td></tr>
+            <tr><td>Stage 4</td><td>Follow-up (id: 109) - Rotting: 30 dagen</td></tr>
+            <tr><td>Stage 5</td><td>Gesprek Gepland (id: 110) - Rotting: 7 dagen</td></tr>
+            <tr><td>Stage 6</td><td>Gewonnen (id: 111)</td></tr>
+            <tr><td>Stage 7</td><td>Verloren (id: 112)</td></tr>
+        </table>
+
+        <h3 style="color: white; margin-top: 25px;">Custom Fields</h3>
+        <table>
+            <tr><td>APK Verzonden Op</td><td>Date field</td></tr>
+            <tr><td>APK Score</td><td>Number field</td></tr>
+            <tr><td>Email Sequence Status</td><td>Actief / Gepauzeerd / Voltooid</td></tr>
+            <tr><td>Laatste Email Verzonden</td><td>Email 1-8</td></tr>
+            <tr><td>Typeform Response ID</td><td>Text field</td></tr>
+            <tr><td>Verbeterpunten</td><td>Large text field</td></tr>
+        </table>
+
+        <h3 style="color: white; margin-top: 25px;">Email Templates</h3>
+        <table>
+            <tr><td>Email 1 (id: 63)</td><td>APK Ontvangen - Dag 1</td></tr>
+            <tr><td>Email 2 (id: 64)</td><td>Al Bekeken - Dag 3</td></tr>
+            <tr><td>Email 3 (id: 65)</td><td>Eerste Stappen - Dag 5</td></tr>
+            <tr><td>Email 4 (id: 66)</td><td>Tip: Time-to-Hire - Dag 8</td></tr>
+            <tr><td>Email 5 (id: 67)</td><td>Tip: Candidate Experience - Dag 11</td></tr>
+            <tr><td>Email 6 (id: 68)</td><td>Tip: Meten = Weten - Dag 14</td></tr>
+            <tr><td>Email 7 (id: 69)</td><td>Gesprek Aanbod - Dag 21</td></tr>
+            <tr><td>Email 8 (id: 70)</td><td>Final Check-in - Dag 30</td></tr>
+        </table>
+
+        <h3 style="color: white; margin-top: 25px;">Volgende Stap: Automations Aanmaken</h3>
+        <p style="color: #ddd;">
+            Ga naar Pipedrive > Automations en maak 8 automations aan volgens de documentatie in:<br>
+            <code style="background: rgba(255,255,255,0.1); padding: 2px 6px; border-radius: 3px;">Pipedrive_Automations_APK_Stap_voor_Stap.md</code>
+        </p>
+    </div>
+
+</div>
+
+</body>
+</html>
