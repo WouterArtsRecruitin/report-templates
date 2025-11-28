@@ -1,0 +1,64 @@
+# =============================================================================
+# RENDER DEPLOYMENT CONFIGURATION
+# =============================================================================
+# Deploy the Meta Campaign Automation service to Render
+#
+# Deployment steps:
+# 1. Push code to GitHub
+# 2. Connect repository to Render
+# 3. Create new Web Service
+# 4. Select this render.yaml for configuration
+# 5. Add environment variables in Render dashboard
+
+services:
+  - type: web
+    name: meta-campaign-automation
+    env: python
+    region: frankfurt  # EU region for GDPR compliance
+    plan: starter  # $7/month, includes 512MB RAM
+    branch: main
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn main_server:app
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11"
+      - key: PORT
+        value: "5000"
+      - key: DEBUG
+        value: "false"
+      # Add these in Render dashboard (sensitive):
+      # - META_APP_ID
+      # - META_APP_SECRET
+      # - META_ACCESS_TOKEN
+      # - META_AD_ACCOUNT_ID
+      # - META_PIXEL_ID
+      # - META_PAGE_ID
+      # - META_WEBHOOK_VERIFY_TOKEN
+      # - SLACK_WEBHOOK_URL
+      # - PIPEDRIVE_API_TOKEN
+      # - SMTP_PASS
+    autoDeploy: true
+    domains:
+      - meta-campaign.kandidatentekort.nl  # Custom domain (optional)
+
+# =============================================================================
+# ENVIRONMENT GROUPS
+# =============================================================================
+# Create these environment groups in Render dashboard:
+#
+# Group: meta-credentials
+#   - META_APP_ID
+#   - META_APP_SECRET
+#   - META_ACCESS_TOKEN
+#   - META_AD_ACCOUNT_ID
+#   - META_PIXEL_ID
+#   - META_PAGE_ID
+#   - META_WEBHOOK_VERIFY_TOKEN
+#
+# Group: integrations
+#   - SLACK_WEBHOOK_URL
+#   - PIPEDRIVE_API_TOKEN
+#   - SMTP_PASS
+#   - SMTP_USER
+#   - NOTIFICATION_EMAIL

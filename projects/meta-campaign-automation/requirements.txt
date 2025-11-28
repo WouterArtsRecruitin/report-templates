@@ -1,5 +1,5 @@
-# Kandidatentekort Automation - Dependencies
-# Deploy to: https://kandidatentekort-automation.onrender.com
+# Meta Campaign Automation - Python Dependencies
+# Deploy to: Render, Railway, Heroku
 
 # Web Framework
 flask>=3.0.0
@@ -12,5 +12,5 @@ requests>=2.31.0
 # Environment Variables
 python-dotenv>=1.0.0
 
-# Type Hints (for development)
+# Type Hints (optional, for development)
 typing-extensions>=4.8.0
