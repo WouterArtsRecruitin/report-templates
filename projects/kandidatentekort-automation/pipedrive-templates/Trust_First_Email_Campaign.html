@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Trust-First Email Templates - Pipedrive Native</title>
+    <!--[if mso]>
+    <noscript>
+        <xml>
+            <o:OfficeDocumentSettings>
+                <o:PixelsPerInch>96</o:PixelsPerInch>
+            </o:OfficeDocumentSettings>
+        </xml>
+    </noscript>
+    <![endif]-->
+    <style>
+        body { font-family: Arial, Helvetica, sans-serif; background: #f5f5f5; padding: 20px; margin: 0; }
+        .email-preview { max-width: 600px; margin: 0 auto 40px; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .email-header { background: #2C3E50; color: white; padding: 10px 20px; font-size: 12px; }
+        .email-subject { background: #f0f0f0; padding: 15px 20px; border-bottom: 1px solid #ddd; }
+        .email-subject strong { color: #333; }
+        .separator { text-align: center; padding: 30px; color: #999; font-size: 14px; }
+        .separator hr { border: none; border-top: 2px dashed #ddd; margin: 15px 0; }
+        .phase-header { background: #EF7D00; color: white; padding: 15px 20px; text-align: center; font-weight: bold; margin: 40px auto 0; max-width: 600px; border-radius: 8px 8px 0 0; }
+        .pipedrive-note { background: #E8F5E9; border-left: 4px solid #4CAF50; padding: 15px; margin: 20px auto; max-width: 560px; font-size: 13px; }
+        .merge-field { background: #FFF3E0; padding: 2px 6px; border-radius: 3px; font-family: monospace; font-size: 12px; }
+    </style>
+</head>
+<body>
+
+<h1 style="text-align: center; color: #2C3E50; margin-bottom: 10px;">Trust-First Email Nurture Campaign</h1>
+<p style="text-align: center; color: #666; max-width: 600px; margin: 0 auto 30px;">
+    8 emails over 30 dagen | Focus: Eerst vertrouwen opbouwen, dan pas conversie<br>
+    <strong>Strategie:</strong> Check-in (Dag 1-5) > Waarde geven (Dag 8-14) > Soft conversie (Dag 21-30)
+</p>
+
+<div class="pipedrive-note">
+    <strong>Pipedrive Merge Fields:</strong><br>
+    <span class="merge-field">{person.first_name}</span> = Voornaam |
+    <span class="merge-field">{deal.title}</span> = Functietitel |
+    <span class="merge-field">{organization.name}</span> = Bedrijfsnaam |
+    <span class="merge-field">{deal.Consult Vervaldatum}</span> = Custom field
+</div>
+
+<!-- ========================================= -->
+<!-- PHASE 1: CHECK-IN EMAILS (TRUST BUILDING) -->
+<!-- ========================================= -->
+
+<div class="phase-header">FASE 1: CHECK-IN EMAILS (Dag 1-5) - Trust Building</div>
+
+<!-- ========================================= -->
+<!-- EMAIL 1: HOE GAAT HET? (Dag 1)           -->
+<!-- ========================================= -->
+
+<div class="email-preview">
+    <div class="email-header">EMAIL 1: HOE GAAT HET? | Verzenden: Dag 1 na levering | Doel: Eerste check-in, geen verkoop</div>
+    <div class="email-subject">
+        <strong>Onderwerp:</strong> Even checken - alles goed ontvangen?
+    </div>
+
+    <!-- Outlook-compatible Email Content -->
+    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color: #ffffff;">
+        <!-- Header with Logo -->
+        <tr>
+            <td style="padding: 30px 40px 20px;">
+                <table role="presentation" cellspacing="0" cellpadding="0" border="0">
+                    <tr>
+                        <td style="background-color: #EF7D00; width: 40px; height: 40px; text-align: center; vertical-align: middle;">
+                            <span style="color: #FFFFFF; font-size: 18px; font-weight: bold;">K</span>
+                        </td>
+                        <td style="padding-left: 12px;">
+                            <span style="color: #2C3E50; font-size: 14px; font-weight: bold;">kandidatentekort.nl</span>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+        <!-- Email Body -->
+        <tr>
+            <td style="padding: 0 40px 30px;">
+                <p style="color: #374151; font-size: 15px; line-height: 1.6; margin: 0 0 20px; font-family: Arial, sans-serif;">
+                    Hoi {person.first_name},
+                </p>
+
+                <p style="color: #374151; font-size: 15px; line-height: 1.6; margin: 0 0 20px; font-family: Arial, sans-serif;">
+                    Gisteren stuurde ik je de geoptimaliseerde versie van je vacature voor <strong>{deal.title}</strong>.
+                </p>
+
+                <p style="color: #374151; font-size: 15px; line-height: 1.6; margin: 0 0 20px; font-family: Arial, sans-serif;">
+                    Even een snelle check: is alles goed aangekomen?
+                </p>
+
+                <p style="color: #374151; font-size: 15px; line-height: 1.6; margin: 0 0 20px; font-family: Arial, sans-serif;">
+                    Als je vragen hebt over de analyse of tips - reply gerust op deze mail. Ik help je graag verder.
+                </p>
+
+                <p style="color: #374151; font-size: 15px; line-height: 1.6; margin: 0 0 5px; font-family: Arial, sans-serif;">
+                    Groeten,
+                </p>
+                <p style="color: #374151; font-size: 15px; line-height: 1.6; margin: 0; font-family: Arial, sans-serif;">
+                    <strong>Wouter</strong><br>
+                    <span style="color: #6B7280; font-size: 13px;">kandidatentekort.nl</span>
+                </p>
+            </td>
+        </tr>
+
+        <!-- Simple Footer -->
+        <tr>
+            <td style="padding: 20px 40px; background-color: #F9FAFB; border-top: 1px solid #E5E7EB;">
+                <p style="color: #9CA3AF; font-size: 11px; margin: 0; font-family: Arial, sans-serif;">
+                    PS: Geen verkooppraatje vandaag - gewoon even checken of alles werkt.
+                </p>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div class="separator">
+    <hr>
+    <hr>
+</div>
+
+<!-- ========================================= -->
+<!-- EMAIL 2: IS HET GELUKT? (Dag 3)          -->
+<!-- ========================================= -->
+
+<div class="email-preview">
+    <div class="email-header">EMAIL 2: IS HET GELUKT? | Verzenden: Dag 3 | Doel: Oprechte interesse, hulp aanbieden</div>
+    <div class="email-subject">
+        <strong>Onderwerp:</strong> Is het gelukt om de aanpassingen door te voeren?
+    </div>
+
+    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color: #ffffff;">
+        <!-- Header -->
+        <tr>
+            <td style="padding: 30px 40px 20px;">
+                <table role="presentation" cellspacing="0" cellpadding="0" border="0">
+                    <tr>
+                        <td style="background-color: #EF7D00; width: 40px; height: 40px; text-align: center; vertical-align: middle;">
+                            <span style="color: #FFFFFF; font-size: 18px; font-weight: bold;">K</span>
+                        </td>
+                        <td style="padding-left: 12px;">
+                            <span style="color: #2C3E50; font-size: 14px; font-weight: bold;">kandidatentekort.nl</span>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+        <!-- Body -->
+        <tr>
+            <td style="padding: 0 40px 30px;">
+                <p style="color: #374151; font-size: 15px; line-height: 1.6; margin: 0 0 20px; font-family: Arial, sans-serif;">
+                    Hoi {person.first_name},
+                </p>
+
+                <p style="color: #374151; font-size: 15px; line-height: 1.6; margin: 0 0 20px; font-family: Arial, sans-serif;">
+                    Even nieuwsgierig: is het gelukt om de verbeterde vacaturetekst te plaatsen?
+                </p>
+
+                <p style="color: #374151; font-size: 15px; line-height: 1.6; margin: 0 0 15px; font-family: Arial, sans-serif;">
+                    Ik hoor het graag als je ergens tegenaan loopt, bijvoorbeeld:
+                </p>
+
+                <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin-bottom: 20px;">
+                    <tr>
+                        <td style="padding: 8px 0; color: #374151; font-size: 14px; font-family: Arial, sans-serif;">
+                            - Intern akkoord nodig voor de nieuwe tekst?
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 8px 0; color: #374151; font-size: 14px; font-family: Arial, sans-serif;">
+                            - Technische problemen met het platform?
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 8px 0; color: #374151; font-size: 14px; font-family: Arial, sans-serif;">
+                            - Twijfels over bepaalde aanpassingen?
+                        </td>
+                    </tr>
+                </table>
+
+                <p style="color: #374151; font-size: 15px; line-height: 1.6; margin: 0 0 20px; font-family: Arial, sans-serif;">
+                    Geen probleem - reply gewoon en ik denk met je mee.
+                </p>
+
+                <p style="color: #374151; font-size: 15px; line-height: 1.6; margin: 0 0 5px; font-family: Arial, sans-serif;">
+                    Groeten,
+                </p>
+                <p style="color: #374151; font-size: 15px; line-height: 1.6; margin: 0; font-family: Arial, sans-serif;">
+                    <strong>Wouter</strong>
+                </p>
+            </td>
+        </tr>
+
+        <!-- Footer -->
+        <tr>
+            <td style="padding: 20px 40px; background-color: #F9FAFB; border-top: 1px solid #E5E7EB;">
+                <p style="color: #9CA3AF; font-size: 11px; margin: 0; font-family: Arial, sans-serif;">
+                    Tip: De meeste recruiters zien binnen 48 uur na plaatsing al verschil in response.
+                </p>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div class="separator">
+    <hr>
+    <hr>
+</div>
+
+<!-- ========================================= -->
+<!-- EMAIL 3: WAT ZIJN DE RESULTATEN? (Dag 5) -->
+<!-- ========================================= -->
+
+<div class="email-preview">
+    <div class="email-header">EMAIL 3: WAT ZIJN DE RESULTATEN? | Verzenden: Dag 5 | Doel: Feedback vragen, case study materiaal</div>
+    <div class="email-subject">
+        <strong>Onderwerp:</strong> Benieuwd - merk je al verschil?
+    </div>
+
+    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color: #ffffff;">
+        <!-- Header -->
+        <tr>
+            <td style="padding: 30px 40px 20px;">
+                <table role="presentation" cellspacing="0" cellpadding="0" border="0">
+                    <tr>
+                        <td style="background-color: #EF7D00; width: 40px; height: 40px; text-align: center; vertical-align: middle;">
+                            <span style="color: #FFFFFF; font-size: 18px; font-weight: bold;">K</span>
+                        </td>
+                        <td style="padding-left: 12px;">
+                            <span style="color: #2C3E50; font-size: 14px; font-weight: bold;">kandidatentekort.nl</span>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+        <!-- Body -->
+        <tr>
+            <td style="padding: 0 40px 30px;">
+                <p style="color: #374151; font-size: 15px; line-height: 1.6; margin: 0 0 20px; font-family: Arial, sans-serif;">
+                    Hoi {person.first_name},
+                </p>
+
+                <p style="color: #374151; font-size: 15px; line-height: 1.6; margin: 0 0 20px; font-family: Arial, sans-serif;">
+                    Het is nu een paar dagen geleden sinds je de verbeterde vacature voor <strong>{deal.title}</strong> hebt ontvangen.
+                </p>
+
+                <p style="color: #374151; font-size: 15px; line-height: 1.6; margin: 0 0 20px; font-family: Arial, sans-serif;">
+                    Ik ben oprecht benieuwd: merk je al verschil in de reacties?
+                </p>
+
+                <!-- Simple box for feedback request -->
+                <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color: #F3F4F6; margin-bottom: 20px;">
+                    <tr>
+                        <td style="padding: 20px; border-left: 4px solid #EF7D00;">
+                            <p style="color: #374151; font-size: 14px; line-height: 1.6; margin: 0; font-family: Arial, sans-serif;">
+                                <strong>Mag ik je iets vragen?</strong><br><br>
+                                Als je 2 minuten hebt, zou je me kunnen vertellen:<br><br>
+                                1. Heb je de nieuwe tekst al live gezet?<br>
+                                2. Zo ja, zie je verschil in aantal/kwaliteit reacties?<br>
+                                3. Wat vond je het meest nuttig aan de analyse?<br><br>
+                                Jouw feedback helpt me om de service te verbeteren voor andere recruiters.
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+
+                <p style="color: #374151; font-size: 15px; line-height: 1.6; margin: 0 0 20px; font-family: Arial, sans-serif;">
+                    Reply gewoon op deze mail - ik lees alles persoonlijk.
+                </p>
+
+                <p style="color: #374151; font-size: 15px; line-height: 1.6; margin: 0 0 5px; font-family: Arial, sans-serif;">
+                    Alvast bedankt,
+                </p>
+                <p style="color: #374151; font-size: 15px; line-height: 1.6; margin: 0; font-family: Arial, sans-serif;">
+                    <strong>Wouter</strong>
+                </p>
+            </td>
+        </tr>
+
+        <!-- Footer -->
+        <tr>
+            <td style="padding: 20px 40px; background-color: #F9FAFB; border-top: 1px solid #E5E7EB;">
+                <p style="color: #9CA3AF; font-size: 11px; margin: 0; font-family: Arial, sans-serif;">
+                    Geen resultaten? Geen probleem - soms duurt het even. Laat het me weten en ik denk mee.
+                </p>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<!-- ========================================= -->
+<!-- PHASE 2: VALUE EMAILS (WAARDE GEVEN)     -->
+<!-- ========================================= -->
+
+<div class="phase-header">FASE 2: WAARDE EMAILS (Dag 8-14) - Gratis Tips & Inzichten</div>
+
+<!-- ========================================= -->
+<!-- EMAIL 4: TIP 1 - FUNCTIETITEL (Dag 8)    -->
+<!-- ========================================= -->
+
+<div class="email-preview">
+    <div class="email-header">EMAIL 4: RECRUITMENT TIP #1 | Verzenden: Dag 8 | Doel: Waarde geven zonder tegenprestatie</div>
+    <div class="email-subject">
+        <strong>Onderwerp:</strong> Recruitment tip: De kracht van de juiste functietitel
+    </div>
+
+    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color: #ffffff;">
+        <!-- Header -->
+        <tr>
+            <td style="padding: 30px 40px 20px;">
+                <table role="presentation" cellspacing="0" cellpadding="0" border="0">
+                    <tr>
+                        <td style="background-color: #EF7D00; width: 40px; height: 40px; text-align: center; vertical-align: middle;">
+                            <span style="color: #FFFFFF; font-size: 18px; font-weight: bold;">K</span>
+                        </td>
+                        <td style="padding-left: 12px;">
+                            <span style="color: #2C3E50; font-size: 14px; font-weight: bold;">kandidatentekort.nl</span>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+        <!-- Body -->
+        <tr>
+            <td style="padding: 0 40px 30px;">
+                <p style="color: #374151; font-size: 15px; line-height: 1.6; margin: 0 0 20px; font-family: Arial, sans-serif;">
+                    Hoi {person.first_name},
+                </p>
+
+                <p style="color: #374151; font-size: 15px; line-height: 1.6; margin: 0 0 20px; font-family: Arial, sans-serif;">
+                    Deze week deel ik een tip die veel recruiters over het hoofd zien:
+                </p>
+
+                <!-- Tip Box -->
+                <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color: #FEF3C7; margin-bottom: 20px;">
+                    <tr>
+                        <td style="padding: 20px; border-left: 4px solid #F59E0B;">
+                            <p style="color: #92400E; font-size: 16px; font-weight: bold; margin: 0 0 15px; font-family: Arial, sans-serif;">
+                                De functietitel bepaalt 70% van je zichtbaarheid
+                            </p>
+                            <p style="color: #78350F; font-size: 14px; line-height: 1.6; margin: 0; font-family: Arial, sans-serif;">
+                                Kandidaten zoeken op specifieke termen. Een creatieve titel als "Teamspeler Extraordinaire" klinkt leuk, maar niemand zoekt daarop.<br><br>
+
+                                <strong>Wat werkt:</strong><br>
+                                - Gebruik de exacte term die kandidaten googlen<br>
+                                - Voeg niveau toe (Junior/Medior/Senior)<br>
+                                - Houd het onder 60 karakters<br><br>
+
+                                <strong>Voorbeeld:</strong><br>
+                                "Commerciele Binnendienst Medewerker" krijgt 3x meer views dan "Sales Ninja"
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+
+                <p style="color: #374151; font-size: 15px; line-height: 1.6; margin: 0 0 20px; font-family: Arial, sans-serif;">
+                    Heb je al gedacht aan het A/B testen van je functietitels? Veel jobboards bieden deze optie gratis.
+                </p>
+
+                <p style="color: #374151; font-size: 15px; line-height: 1.6; margin: 0 0 5px; font-family: Arial, sans-serif;">
+                    Succes deze week,
+                </p>
+                <p style="color: #374151; font-size: 15px; line-height: 1.6; margin: 0; font-family: Arial, sans-serif;">
+                    <strong>Wouter</strong>
+                </p>
+            </td>
+        </tr>
+
+        <!-- Footer -->
+        <tr>
+            <td style="padding: 20px 40px; background-color: #F9FAFB; border-top: 1px solid #E5E7EB;">
+                <p style="color: #9CA3AF; font-size: 11px; margin: 0; font-family: Arial, sans-serif;">
+                    Volgende week: Waarom salaris vermelden je 35% meer sollicitaties oplevert
+                </p>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div class="separator">
+    <hr>
+    <hr>
+</div>
+
+<!-- ========================================= -->
+<!-- EMAIL 5: TIP 2 - SALARIS (Dag 11)        -->
+<!-- ========================================= -->
+
+<div class="email-preview">
+    <div class="email-header">EMAIL 5: RECRUITMENT TIP #2 | Verzenden: Dag 11 | Doel: Waarde geven, expertise tonen</div>
+    <div class="email-subject">
+        <strong>Onderwerp:</strong> Recruitment tip: Het salarisvraagstuk
+    </div>
+
+    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color: #ffffff;">
+        <!-- Header -->
+        <tr>
+            <td style="padding: 30px 40px 20px;">
+                <table role="presentation" cellspacing="0" cellpadding="0" border="0">
+                    <tr>
+                        <td style="background-color: #EF7D00; width: 40px; height: 40px; text-align: center; vertical-align: middle;">
+                            <span style="color: #FFFFFF; font-size: 18px; font-weight: bold;">K</span>
+                        </td>
+                        <td style="padding-left: 12px;">
+                            <span style="color: #2C3E50; font-size: 14px; font-weight: bold;">kandidatentekort.nl</span>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+        <!-- Body -->
+        <tr>
+            <td style="padding: 0 40px 30px;">
+                <p style="color: #374151; font-size: 15px; line-height: 1.6; margin: 0 0 20px; font-family: Arial, sans-serif;">
+                    Hoi {person.first_name},
+                </p>
+
+                <p style="color: #374151; font-size: 15px; line-height: 1.6; margin: 0 0 20px; font-family: Arial, sans-serif;">
+                    "Salaris: marktconform" - de meest waardeloze zin in recruitment.
+                </p>
+
+                <p style="color: #374151; font-size: 15px; line-height: 1.6; margin: 0 0 15px; font-family: Arial, sans-serif;">
+                    Hier is wat de data zegt:
+                </p>
+
+                <!-- Stats Box -->
+                <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color: #D1FAE5; margin-bottom: 20px;">
+                    <tr>
+                        <td style="padding: 20px; border-left: 4px solid #10B981;">
+                            <p style="color: #065F46; font-size: 14px; line-height: 1.8; margin: 0; font-family: Arial, sans-serif;">
+                                <strong>Vacatures met salarisindicatie krijgen:</strong><br><br>
+                                + 35% meer sollicitaties<br>
+                                + 27% hogere kwaliteit kandidaten<br>
+                                + 40% snellere time-to-hire<br><br>
+
+                                <em>Bron: Indeed Hiring Lab 2024</em>
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+
+                <p style="color: #374151; font-size: 15px; line-height: 1.6; margin: 0 0 15px; font-family: Arial, sans-serif;">
+                    <strong>Maar wat als je het niet mag vermelden?</strong>
+                </p>
+
+                <p style="color: #374151; font-size: 15px; line-height: 1.6; margin: 0 0 20px; font-family: Arial, sans-serif;">
+                    Alternatieven die ook werken:<br><br>
+                    - "Salarisindicatie: vanaf EUR 3.500 bruto/maand"<br>
+                    - "Indicatie: schaal 8-10 CAO [naam]"<br>
+                    - "Budget: EUR 45.000 - 55.000 op jaarbasis"
+                </p>
+
+                <p style="color: #374151; font-size: 15px; line-height: 1.6; margin: 0 0 20px; font-family: Arial, sans-serif;">
+                    Zelfs een range is beter dan niets.
+                </p>
+
+                <p style="color: #374151; font-size: 15px; line-height: 1.6; margin: 0 0 5px; font-family: Arial, sans-serif;">
+                    Groeten,
+                </p>
+                <p style="color: #374151; font-size: 15px; line-height: 1.6; margin: 0; font-family: Arial, sans-serif;">
+                    <strong>Wouter</strong>
+                </p>
+            </td>
+        </tr>
+
+        <!-- Footer -->
+        <tr>
+            <td style="padding: 20px 40px; background-color: #F9FAFB; border-top: 1px solid #E5E7EB;">
+                <p style="color: #9CA3AF; font-size: 11px; margin: 0; font-family: Arial, sans-serif;">
+                    Vragen? Reply gewoon op deze mail.
+                </p>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div class="separator">
+    <hr>
+    <hr>
+</div>
+
+<!-- ========================================= -->
+<!-- EMAIL 6: TIP 3 - OPENING (Dag 14)        -->
+<!-- ========================================= -->
+
+<div class="email-preview">
+    <div class="email-header">EMAIL 6: RECRUITMENT TIP #3 | Verzenden: Dag 14 | Doel: Laatste waarde tip + zachte transitie</div>
+    <div class="email-subject">
+        <strong>Onderwerp:</strong> Recruitment tip: De eerste 6 seconden
+    </div>
+
+    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color: #ffffff;">
+        <!-- Header -->
+        <tr>
+            <td style="padding: 30px 40px 20px;">
+                <table role="presentation" cellspacing="0" cellpadding="0" border="0">
+                    <tr>
+                        <td style="background-color: #EF7D00; width: 40px; height: 40px; text-align: center; vertical-align: middle;">
+                            <span style="color: #FFFFFF; font-size: 18px; font-weight: bold;">K</span>
+                        </td>
+                        <td style="padding-left: 12px;">
+                            <span style="color: #2C3E50; font-size: 14px; font-weight: bold;">kandidatentekort.nl</span>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+        <!-- Body -->
+        <tr>
+            <td style="padding: 0 40px 30px;">
+                <p style="color: #374151; font-size: 15px; line-height: 1.6; margin: 0 0 20px; font-family: Arial, sans-serif;">
+                    Hoi {person.first_name},
+                </p>
+
+                <p style="color: #374151; font-size: 15px; line-height: 1.6; margin: 0 0 20px; font-family: Arial, sans-serif;">
+                    Wist je dat kandidaten gemiddeld <strong>6 seconden</strong> besteden aan de eerste scan van een vacature?
+                </p>
+
+                <p style="color: #374151; font-size: 15px; line-height: 1.6; margin: 0 0 15px; font-family: Arial, sans-serif;">
+                    In die 6 seconden beslissen ze of ze doorlezen of wegklikken.
+                </p>
+
+                <!-- Tip Box -->
+                <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color: #EDE9FE; margin-bottom: 20px;">
+                    <tr>
+                        <td style="padding: 20px; border-left: 4px solid #7C3AED;">
+                            <p style="color: #5B21B6; font-size: 14px; line-height: 1.6; margin: 0; font-family: Arial, sans-serif;">
+                                <strong>Wat ze scannen:</strong><br><br>
+                                1. Functietitel (check)<br>
+                                2. Salaris (als het er staat)<br>
+                                3. <strong>De eerste 2-3 zinnen</strong><br>
+                                4. Locatie<br>
+                                5. Logo/bedrijfsnaam<br><br>
+
+                                <strong>Het probleem:</strong><br>
+                                90% van de vacatures begint met "Wij zoeken een enthousiaste..."<br><br>
+
+                                <strong>De oplossing:</strong><br>
+                                Start met een vraag of een bold statement.<br><br>
+
+                                Bijvoorbeeld:<br>
+                                "Frustreert het je dat je klanten niet snel genoeg geholpen worden?"<br>
+                                "Dit is geen gewone sales functie."<br>
+                                "EUR 4.500 bruto. Fulltime. Rotterdam."
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+
+                <p style="color: #374151; font-size: 15px; line-height: 1.6; margin: 0 0 20px; font-family: Arial, sans-serif;">
+                    Pak eens een van je huidige vacatures erbij. Hoe is de opening?
+                </p>
+
+                <p style="color: #374151; font-size: 15px; line-height: 1.6; margin: 0 0 5px; font-family: Arial, sans-serif;">
+                    Tot volgende week,
+                </p>
+                <p style="color: #374151; font-size: 15px; line-height: 1.6; margin: 0; font-family: Arial, sans-serif;">
+                    <strong>Wouter</strong>
+                </p>
+            </td>
+        </tr>
+
+        <!-- Footer -->
+        <tr>
+            <td style="padding: 20px 40px; background-color: #F9FAFB; border-top: 1px solid #E5E7EB;">
+                <p style="color: #9CA3AF; font-size: 11px; margin: 0; font-family: Arial, sans-serif;">
+                    Dit was de laatste tip in deze serie. Vond je ze nuttig? Laat het me weten.
+                </p>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<!-- ========================================= -->
+<!-- PHASE 3: SOFT CONVERSION                 -->
+<!-- ========================================= -->
+
+<div class="phase-header">FASE 3: SOFT CONVERSION (Dag 21-30) - Gesprek Aanbieden</div>
+
+<!-- ========================================= -->
+<!-- EMAIL 7: GESPREK AANBOD (Dag 21)         -->
+<!-- ========================================= -->
+
+<div class="email-preview">
+    <div class="email-header">EMAIL 7: GESPREK AANBOD | Verzenden: Dag 21 | Doel: Zachte conversie, geen druk</div>
+    <div class="email-subject">
+        <strong>Onderwerp:</strong> Zullen we eens bellen?
+    </div>
+
+    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color: #ffffff;">
+        <!-- Header -->
+        <tr>
+            <td style="padding: 30px 40px 20px;">
+                <table role="presentation" cellspacing="0" cellpadding="0" border="0">
+                    <tr>
+                        <td style="background-color: #EF7D00; width: 40px; height: 40px; text-align: center; vertical-align: middle;">
+                            <span style="color: #FFFFFF; font-size: 18px; font-weight: bold;">K</span>
+                        </td>
+                        <td style="padding-left: 12px;">
+                            <span style="color: #2C3E50; font-size: 14px; font-weight: bold;">kandidatentekort.nl</span>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+        <!-- Body -->
+        <tr>
+            <td style="padding: 0 40px 30px;">
+                <p style="color: #374151; font-size: 15px; line-height: 1.6; margin: 0 0 20px; font-family: Arial, sans-serif;">
+                    Hoi {person.first_name},
+                </p>
+
+                <p style="color: #374151; font-size: 15px; line-height: 1.6; margin: 0 0 20px; font-family: Arial, sans-serif;">
+                    Het is nu drie weken geleden dat je de vacature-analyse ontving.
+                </p>
+
+                <p style="color: #374151; font-size: 15px; line-height: 1.6; margin: 0 0 20px; font-family: Arial, sans-serif;">
+                    Ik ben benieuwd hoe het gaat met je werving. Heb je de kandidaat al gevonden? Of loop je nog ergens tegenaan?
+                </p>
+
+                <!-- Soft CTA Box -->
+                <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color: #F3F4F6; margin-bottom: 20px;">
+                    <tr>
+                        <td style="padding: 20px; border-left: 4px solid #EF7D00;">
+                            <p style="color: #374151; font-size: 14px; line-height: 1.6; margin: 0; font-family: Arial, sans-serif;">
+                                <strong>Zullen we even bellen?</strong><br><br>
+                                Geen verkooppraatje, gewoon een kort gesprek (15 min) om te kijken of ik je ergens mee kan helpen.<br><br>
+
+                                We kunnen het hebben over:<br>
+                                - De resultaten van je huidige vacature<br>
+                                - Andere openstaande posities<br>
+                                - Recruitment uitdagingen waar je tegenaan loopt<br><br>
+
+                                <a href="https://calendly.com/wouter-arts-/vacature-analyse-advies" style="color: #EF7D00; font-weight: bold;">Plan hier een moment dat jou uitkomt</a>
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+
+                <p style="color: #374151; font-size: 15px; line-height: 1.6; margin: 0 0 20px; font-family: Arial, sans-serif;">
+                    Geen zin of geen tijd? Helemaal prima - reply dan gewoon even met een update. Ik hoor graag hoe het gaat.
+                </p>
+
+                <p style="color: #374151; font-size: 15px; line-height: 1.6; margin: 0 0 5px; font-family: Arial, sans-serif;">
+                    Groeten,
+                </p>
+                <p style="color: #374151; font-size: 15px; line-height: 1.6; margin: 0; font-family: Arial, sans-serif;">
+                    <strong>Wouter</strong>
+                </p>
+            </td>
+        </tr>
+
+        <!-- Footer -->
+        <tr>
+            <td style="padding: 20px 40px; background-color: #F9FAFB; border-top: 1px solid #E5E7EB;">
+                <p style="color: #9CA3AF; font-size: 11px; margin: 0; font-family: Arial, sans-serif;">
+                    PS: Ik reageer ook gewoon op een reply - wat jou het makkelijkst is.
+                </p>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div class="separator">
+    <hr>
+    <hr>
+</div>
+
+<!-- ========================================= -->
+<!-- EMAIL 8: FINAL CHECK-IN (Dag 30)         -->
+<!-- ========================================= -->
+
+<div class="email-preview">
+    <div class="email-header">EMAIL 8: FINAL CHECK-IN | Verzenden: Dag 30 | Doel: Laatste contact, deur open laten</div>
+    <div class="email-subject">
+        <strong>Onderwerp:</strong> Laatste check - hoe staat het ervoor?
+    </div>
+
+    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color: #ffffff;">
+        <!-- Header -->
+        <tr>
+            <td style="padding: 30px 40px 20px;">
+                <table role="presentation" cellspacing="0" cellpadding="0" border="0">
+                    <tr>
+                        <td style="background-color: #EF7D00; width: 40px; height: 40px; text-align: center; vertical-align: middle;">
+                            <span style="color: #FFFFFF; font-size: 18px; font-weight: bold;">K</span>
+                        </td>
+                        <td style="padding-left: 12px;">
+                            <span style="color: #2C3E50; font-size: 14px; font-weight: bold;">kandidatentekort.nl</span>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+        <!-- Body -->
+        <tr>
+            <td style="padding: 0 40px 30px;">
+                <p style="color: #374151; font-size: 15px; line-height: 1.6; margin: 0 0 20px; font-family: Arial, sans-serif;">
+                    Hoi {person.first_name},
+                </p>
+
+                <p style="color: #374151; font-size: 15px; line-height: 1.6; margin: 0 0 20px; font-family: Arial, sans-serif;">
+                    Een maand geleden verstuurde ik de analyse voor je <strong>{deal.title}</strong> vacature.
+                </p>
+
+                <p style="color: #374151; font-size: 15px; line-height: 1.6; margin: 0 0 20px; font-family: Arial, sans-serif;">
+                    Dit is mijn laatste mail in deze serie - daarna laat ik je met rust.
+                </p>
+
+                <p style="color: #374151; font-size: 15px; line-height: 1.6; margin: 0 0 15px; font-family: Arial, sans-serif;">
+                    Maar voor ik ga, ben ik nieuwsgierig:
+                </p>
+
+                <!-- Options Box -->
+                <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color: #F3F4F6; margin-bottom: 20px;">
+                    <tr>
+                        <td style="padding: 20px;">
+                            <p style="color: #374151; font-size: 14px; line-height: 1.8; margin: 0; font-family: Arial, sans-serif;">
+                                <strong>Hoe is het gegaan?</strong><br><br>
+
+                                A. Kandidaat gevonden - top!<br>
+                                B. Nog bezig - maar gaat goed<br>
+                                C. Vacature on hold gezet<br>
+                                D. Hulp nodig - laten we bellen<br><br>
+
+                                Reply met A, B, C of D (of vertel gewoon je verhaal)
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+
+                <p style="color: #374151; font-size: 15px; line-height: 1.6; margin: 0 0 20px; font-family: Arial, sans-serif;">
+                    Hoe dan ook - succes met je recruitment. En mocht je in de toekomst weer een vacature willen laten checken, je weet me te vinden.
+                </p>
+
+                <p style="color: #374151; font-size: 15px; line-height: 1.6; margin: 0 0 5px; font-family: Arial, sans-serif;">
+                    Groeten,
+                </p>
+                <p style="color: #374151; font-size: 15px; line-height: 1.6; margin: 0; font-family: Arial, sans-serif;">
+                    <strong>Wouter</strong><br>
+                    <span style="color: #6B7280; font-size: 13px;">kandidatentekort.nl</span>
+                </p>
+            </td>
+        </tr>
+
+        <!-- Footer -->
+        <tr>
+            <td style="padding: 20px 40px; background-color: #F9FAFB; border-top: 1px solid #E5E7EB;">
+                <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                    <tr>
+                        <td style="color: #9CA3AF; font-size: 11px; font-family: Arial, sans-serif;">
+                            <p style="margin: 0 0 10px;">
+                                <strong>Contact:</strong><br>
+                                warts@recruitin.nl | kandidatentekort.nl
+                            </p>
+                            <p style="margin: 0;">
+                                PS: Nieuwe vacature? <a href="https://kandidatentekort.nl" style="color: #EF7D00;">Stuur hem hier in</a>
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<!-- ========================================= -->
+<!-- PIPEDRIVE SETUP INSTRUCTIONS             -->
+<!-- ========================================= -->
+
+<div style="max-width: 600px; margin: 40px auto; padding: 30px; background: #2C3E50; color: white; border-radius: 8px;">
+    <h2 style="margin: 0 0 20px; color: #EF7D00;">Pipedrive Setup Instructies</h2>
+
+    <h3 style="margin: 20px 0 10px; color: #fff;">1. Custom Fields Aanmaken</h3>
+    <p style="font-size: 13px; line-height: 1.6; margin: 0 0 15px;">
+        Ga naar: Settings > Data fields > Deal fields<br><br>
+        Voeg toe:<br>
+        - <strong>Rapport Verzonden Op</strong> (Date)<br>
+        - <strong>Email Sequence Status</strong> (Single option: Actief/Gepauzeerd/Voltooid)<br>
+        - <strong>Laatste Email Verzonden</strong> (Single option: Email 1-8)
+    </p>
+
+    <h3 style="margin: 20px 0 10px; color: #fff;">2. Email Templates Importeren</h3>
+    <p style="font-size: 13px; line-height: 1.6; margin: 0 0 15px;">
+        Ga naar: Settings > Email templates<br>
+        Maak 8 templates aan met de content hierboven.<br>
+        Gebruik merge fields: {person.first_name}, {deal.title}
+    </p>
+
+    <h3 style="margin: 20px 0 10px; color: #fff;">3. Automations Instellen</h3>
+    <p style="font-size: 13px; line-height: 1.6; margin: 0 0 15px;">
+        Ga naar: Automations > Create automation<br><br>
+
+        <strong>Automation 1: Email 1 (Dag 1)</strong><br>
+        Trigger: Deal moves to [Rapport Verzonden]<br>
+        Wait: 1 day<br>
+        Action: Send email (Email 1 template)<br>
+        Action: Update deal field "Laatste Email" = "Email 1"<br><br>
+
+        <strong>Herhaal voor Email 2-8</strong> met de juiste delays:<br>
+        Email 2: 3 dagen | Email 3: 5 dagen | Email 4: 8 dagen<br>
+        Email 5: 11 dagen | Email 6: 14 dagen | Email 7: 21 dagen | Email 8: 30 dagen
+    </p>
+
+    <h3 style="margin: 20px 0 10px; color: #fff;">4. Stop Conditions</h3>
+    <p style="font-size: 13px; line-height: 1.6; margin: 0;">
+        Voeg aan elke automation toe:<br>
+        Condition: "Email Sequence Status" = "Actief"<br><br>
+        Als iemand reageert of converteert:<br>
+        Zet "Email Sequence Status" naar "Gepauzeerd"
+    </p>
+</div>
+
+</body>
+</html>
