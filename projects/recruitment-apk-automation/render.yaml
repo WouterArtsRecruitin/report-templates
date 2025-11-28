@@ -1,0 +1,28 @@
+# Render Blueprint for Recruitment APK Webhook Handler
+# https://render.com/docs/blueprint-spec
+
+services:
+  - type: web
+    name: recruitment-apk-webhook
+    runtime: python
+    region: frankfurt  # EU region for GDPR compliance
+    plan: free  # Or starter for production
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn webhook_handler_apk:app
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11"
+      - key: CLAUDE_API_KEY
+        sync: false  # Set manually in Render dashboard
+      - key: PIPEDRIVE_API_TOKEN
+        sync: false
+      - key: SMTP_HOST
+        value: smtp.gmail.com
+      - key: SMTP_PORT
+        value: "587"
+      - key: SMTP_USER
+        sync: false
+      - key: SMTP_PASS
+        sync: false
+    healthCheckPath: /health
+    autoDeploy: true
