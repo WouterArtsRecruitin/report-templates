@@ -1,0 +1,355 @@
+<!-- =================================================================== -->
+<!-- META PIXEL INTEGRATION FOR KANDIDATENTEKORT.NL                      -->
+<!-- Deploy via Netlify: kandidatentekortv2                              -->
+<!-- Pixel ID: 1443564313411457                                          -->
+<!-- =================================================================== -->
+
+<!-- ============================== -->
+<!-- PART 1: BASE PIXEL CODE        -->
+<!-- Add this to <head> section     -->
+<!-- ============================== -->
+
+<!-- Meta Pixel Code for kandidatentekort.nl -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1443564313411457');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1443564313411457&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+
+<!-- ============================== -->
+<!-- PART 2: EVENT TRACKING SCRIPT  -->
+<!-- Add this before </body>        -->
+<!-- ============================== -->
+
+<script>
+(function() {
+    'use strict';
+
+    // ============================================
+    // KANDIDATENTEKORT.NL - META PIXEL EVENTS
+    // ============================================
+
+    // Configuration
+    var CONFIG = {
+        pixelId: '1443564313411457',
+        serverEndpoint: 'https://your-render-app.onrender.com/api/conversion',
+        debug: false
+    };
+
+    // Utility function for logging
+    function log(message, data) {
+        if (CONFIG.debug) {
+            console.log('[Meta Pixel]', message, data || '');
+        }
+    }
+
+    // ============================================
+    // PAGE-SPECIFIC EVENTS
+    // ============================================
+
+    var path = window.location.pathname;
+
+    // Home page
+    if (path === '/' || path === '/index.html') {
+        log('Home page tracked');
+    }
+
+    // Vacancy analysis page
+    if (path.includes('/analyse') || path.includes('/check') || path.includes('/assessment')) {
+        fbq('track', 'ViewContent', {
+            content_name: 'Vacature Analyse Tool',
+            content_category: 'assessment_tool'
+        });
+        log('ViewContent event sent');
+    }
+
+    // Pricing page - InitiateCheckout
+    if (path.includes('/prijzen') || path.includes('/pricing') || path.includes('/plans')) {
+        fbq('track', 'InitiateCheckout', {
+            content_name: 'Pricing Page',
+            currency: 'EUR'
+        });
+        log('InitiateCheckout event sent');
+    }
+
+    // Contact page
+    if (path.includes('/contact')) {
+        fbq('track', 'ViewContent', {
+            content_name: 'Contact Page',
+            content_category: 'contact'
+        });
+        log('Contact ViewContent event sent');
+    }
+
+    // ============================================
+    // FORM TRACKING
+    // ============================================
+
+    document.addEventListener('DOMContentLoaded', function() {
+
+        // Track all form submissions
+        var forms = document.querySelectorAll('form');
+        forms.forEach(function(form) {
+            form.addEventListener('submit', function(e) {
+                var formName = form.getAttribute('data-form-name') ||
+                               form.getAttribute('name') ||
+                               form.getAttribute('id') ||
+                               'Contact Form';
+
+                // Send Lead event
+                fbq('track', 'Lead', {
+                    content_name: formName,
+                    content_category: 'form_submission',
+                    value: 50,
+                    currency: 'EUR'
+                });
+
+                log('Lead event sent for form:', formName);
+
+                // Optional: Send to server for Conversion API deduplication
+                if (CONFIG.serverEndpoint) {
+                    sendServerEvent('lead', {
+                        content_name: formName,
+                        page_url: window.location.href
+                    });
+                }
+            });
+        });
+
+        // Track specific buttons
+        var ctaButtons = document.querySelectorAll('[data-track-cta], .cta-button, .btn-primary');
+        ctaButtons.forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                var ctaName = btn.getAttribute('data-track-cta') ||
+                              btn.textContent.trim().substring(0, 50);
+
+                fbq('trackCustom', 'CTAClick', {
+                    cta_name: ctaName,
+                    page: window.location.pathname
+                });
+
+                log('CTA click tracked:', ctaName);
+            });
+        });
+
+        // Track Typeform embeds
+        var typeformIframes = document.querySelectorAll('iframe[src*="typeform"]');
+        if (typeformIframes.length > 0) {
+            log('Typeform detected, setting up tracking');
+
+            // Track when Typeform loads
+            typeformIframes.forEach(function(iframe) {
+                iframe.addEventListener('load', function() {
+                    fbq('track', 'InitiateCheckout', {
+                        content_name: 'Assessment Form Loaded',
+                        content_category: 'typeform'
+                    });
+                    log('Typeform load tracked');
+                });
+            });
+        }
+
+        // Track Calendly embeds
+        var calendlyEmbeds = document.querySelectorAll('[data-url*="calendly"]');
+        if (calendlyEmbeds.length > 0) {
+            log('Calendly detected, setting up tracking');
+
+            window.addEventListener('message', function(e) {
+                if (e.data.event && e.data.event.indexOf('calendly') === 0) {
+                    if (e.data.event === 'calendly.event_scheduled') {
+                        fbq('track', 'Schedule', {
+                            content_name: 'Calendly Booking',
+                            content_category: 'meeting'
+                        });
+                        log('Calendly booking tracked');
+                    }
+                }
+            });
+        }
+    });
+
+    // ============================================
+    // SCROLL DEPTH TRACKING
+    // ============================================
+
+    var scrollDepths = [25, 50, 75, 100];
+    var trackedDepths = [];
+
+    window.addEventListener('scroll', function() {
+        var scrollHeight = document.body.scrollHeight - window.innerHeight;
+        if (scrollHeight <= 0) return;
+
+        var scrollPercent = Math.round((window.scrollY / scrollHeight) * 100);
+
+        scrollDepths.forEach(function(depth) {
+            if (scrollPercent >= depth && trackedDepths.indexOf(depth) === -1) {
+                trackedDepths.push(depth);
+                fbq('trackCustom', 'ScrollDepth', {
+                    depth: depth,
+                    page: window.location.pathname
+                });
+                log('Scroll depth tracked:', depth + '%');
+            }
+        });
+    });
+
+    // ============================================
+    // TIME ON PAGE TRACKING
+    // ============================================
+
+    var startTime = Date.now();
+    var timeThresholds = [30, 60, 120, 300]; // seconds
+    var trackedTimes = [];
+
+    setInterval(function() {
+        var timeOnPage = Math.floor((Date.now() - startTime) / 1000);
+
+        timeThresholds.forEach(function(threshold) {
+            if (timeOnPage >= threshold && trackedTimes.indexOf(threshold) === -1) {
+                trackedTimes.push(threshold);
+                fbq('trackCustom', 'TimeOnPage', {
+                    seconds: threshold,
+                    page: window.location.pathname
+                });
+                log('Time on page tracked:', threshold + 's');
+            }
+        });
+    }, 5000);
+
+    // ============================================
+    // SERVER-SIDE EVENT HELPER
+    // ============================================
+
+    function sendServerEvent(eventType, eventData) {
+        if (!CONFIG.serverEndpoint) return;
+
+        var endpoint = CONFIG.serverEndpoint + '/' + eventType;
+
+        fetch(endpoint, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(eventData),
+            credentials: 'include'
+        })
+        .then(function(response) {
+            log('Server event sent:', eventType);
+        })
+        .catch(function(error) {
+            log('Server event error:', error);
+        });
+    }
+
+    // ============================================
+    // TYPEFORM POSTMESSAGE LISTENER
+    // ============================================
+
+    window.addEventListener('message', function(event) {
+        // Typeform events
+        if (event.data && typeof event.data === 'object') {
+            // Typeform embed events
+            if (event.data.type === 'form-screen-changed') {
+                fbq('trackCustom', 'FormProgress', {
+                    content_name: 'Assessment Progress',
+                    step: event.data.ref || 'unknown'
+                });
+            }
+
+            // Typeform submission
+            if (event.data.type === 'form-submit') {
+                fbq('track', 'Lead', {
+                    content_name: 'Typeform Assessment Completed',
+                    content_category: 'assessment',
+                    value: 50,
+                    currency: 'EUR'
+                });
+
+                fbq('track', 'CompleteRegistration', {
+                    content_name: 'Assessment Registration',
+                    status: 'completed'
+                });
+
+                log('Typeform submission tracked');
+            }
+        }
+    });
+
+    // ============================================
+    // EXTERNAL LINK TRACKING
+    // ============================================
+
+    document.addEventListener('click', function(e) {
+        var link = e.target.closest('a');
+        if (!link) return;
+
+        var href = link.getAttribute('href');
+        if (!href) return;
+
+        // Track external links
+        if (href.indexOf('http') === 0 && href.indexOf(window.location.hostname) === -1) {
+            fbq('trackCustom', 'ExternalClick', {
+                url: href,
+                link_text: link.textContent.trim().substring(0, 50)
+            });
+            log('External link click tracked:', href);
+        }
+
+        // Track phone clicks
+        if (href.indexOf('tel:') === 0) {
+            fbq('track', 'Contact', {
+                content_name: 'Phone Click',
+                content_category: 'phone'
+            });
+            log('Phone click tracked');
+        }
+
+        // Track email clicks
+        if (href.indexOf('mailto:') === 0) {
+            fbq('track', 'Contact', {
+                content_name: 'Email Click',
+                content_category: 'email'
+            });
+            log('Email click tracked');
+        }
+    });
+
+    // ============================================
+    // INITIALIZATION COMPLETE
+    // ============================================
+
+    log('Meta Pixel tracking initialized');
+    log('Pixel ID:', CONFIG.pixelId);
+
+})();
+</script>
+
+
+<!-- ============================== -->
+<!-- PART 3: VERIFICATION SCRIPT    -->
+<!-- Add temporarily for testing    -->
+<!-- ============================== -->
+
+<script>
+// Pixel Verification - Remove after testing
+(function() {
+    if (typeof fbq !== 'undefined') {
+        console.log('[Meta Pixel] ✅ Pixel loaded successfully');
+        console.log('[Meta Pixel] Pixel ID: 1443564313411457');
+    } else {
+        console.error('[Meta Pixel] ❌ Pixel not loaded - check installation');
+    }
+})();
+</script>

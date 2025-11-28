@@ -1,12 +1,19 @@
 #!/usr/bin/env python3
 """
-RECRUITMENT APK - WEBHOOK HANDLER
-=================================
+RECRUITMENT APK + META CAMPAIGN AUTOMATION - WEBHOOK HANDLER
+============================================================
 Typeform: https://form.typeform.com/to/cuGe3IEC
 Pipeline: Recruitment APK (id: 2)
 Website: www.recruitmentapk.nl
 
-Deploy to Render for Typeform webhook processing.
+Deploy to Render: https://kandidatentekort-automation.onrender.com
+
+Features:
+1. Recruitment APK Typeform webhook processing
+2. Meta Campaign automation (Pixel, Conversion API, Lead Ads)
+3. Pipedrive CRM integration
+4. Email automation sequences
+5. Slack notifications for leads
 
 Flow:
 1. Receive Typeform submission (recruitment maturity scan)
@@ -14,6 +21,7 @@ Flow:
 3. Generate APK report with Claude AI
 4. Send email with report
 5. Trigger email automation sequence
+6. Send Meta Conversion API events
 """
 
 import os
@@ -25,13 +33,25 @@ from email.mime.multipart import MIMEMultipart
 from datetime import datetime
 from typing import Dict, Any, Optional, List
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 import requests
 
 # Import email automation service
 from email_automation_service import start_email_sequence
 
+# Import Meta campaign modules
+try:
+    from pixel_tracking import PixelCodeGenerator, ConversionAPI, UserData, CustomData, PixelConfig
+    from lead_ads_handler import LeadAdsWebhookHandler, LeadAdsConfig
+    from campaign_automation import CampaignAutomationService, CampaignTemplates, AudienceBuilder
+    META_MODULES_AVAILABLE = True
+except ImportError as e:
+    META_MODULES_AVAILABLE = False
+    logging.warning(f"Meta modules not available: {e}")
+
 # Initialize Flask app
 app = Flask(__name__)
+CORS(app)
 
 # Configure logging
 logging.basicConfig(
@@ -73,10 +93,22 @@ def health_check():
     """Health check endpoint"""
     return jsonify({
         'status': 'healthy',
-        'service': 'recruitment-apk-webhook',
-        'version': '1.0.0',
-        'pipeline': 'Recruitment APK',
-        'typeform': 'cuGe3IEC'
+        'service': 'kandidatentekort-automation',
+        'version': '6.0.0',
+        'features': {
+            'recruitment_apk': True,
+            'meta_campaign': META_MODULES_AVAILABLE,
+            'pipedrive': True,
+            'email_automation': True
+        },
+        'endpoints': {
+            'typeform': '/webhook/typeform',
+            'meta_leads': '/webhook/meta-leads',
+            'pixel_code': '/api/pixel/code',
+            'conversion': '/api/conversion/lead',
+            'audiences': '/api/audiences'
+        },
+        'pixel_id': PixelConfig.PIXEL_ID if META_MODULES_AVAILABLE else None
     })
 
 
@@ -800,10 +832,295 @@ recruitmentapk.nl
 
 
 # ==============================================================================
+# META CAMPAIGN AUTOMATION ENDPOINTS
+# ==============================================================================
+
+# Initialize Meta services (if available)
+if META_MODULES_AVAILABLE:
+    pixel_generator = PixelCodeGenerator()
+    conversion_api = ConversionAPI()
+    lead_handler = LeadAdsWebhookHandler()
+    audience_builder = AudienceBuilder()
+
+
+@app.route('/webhook/meta-leads', methods=['GET', 'POST'])
+def meta_leads_webhook():
+    """
+    Meta Lead Ads webhook endpoint
+
+    GET: Webhook verification
+    POST: Lead data processing → Slack + Pipedrive
+    """
+    if not META_MODULES_AVAILABLE:
+        return jsonify({'error': 'Meta modules not available'}), 503
+
+    if request.method == 'GET':
+        return lead_handler.verify_webhook(request)
+    return lead_handler.process_webhook(request)
+
+
+@app.route('/api/pixel/code', methods=['GET'])
+def get_pixel_code():
+    """Get base Meta Pixel installation code for kandidatentekort.nl"""
+    if not META_MODULES_AVAILABLE:
+        return jsonify({'error': 'Meta modules not available'}), 503
+
+    return jsonify({
+        'pixel_id': PixelConfig.PIXEL_ID,
+        'code': pixel_generator.get_base_pixel_code(),
+        'instructions': 'Add this code to the <head> section of kandidatentekort.nl'
+    })
+
+
+@app.route('/api/pixel/netlify', methods=['GET'])
+def get_netlify_pixel_code():
+    """Get complete Netlify-ready pixel integration code"""
+    if not META_MODULES_AVAILABLE:
+        return jsonify({'error': 'Meta modules not available'}), 503
+
+    return jsonify({
+        'pixel_id': PixelConfig.PIXEL_ID,
+        'code': pixel_generator.get_netlify_integration_code(),
+        'deploy_to': 'kandidatentekortv2.netlify.app',
+        'instructions': [
+            '1. Copy the code from the "code" field',
+            '2. Add to your index.html or layout template',
+            '3. Deploy to Netlify',
+            '4. Verify with Facebook Pixel Helper extension'
+        ]
+    })
+
+
+@app.route('/api/pixel/event/<event_name>', methods=['GET'])
+def get_event_code(event_name: str):
+    """Get JavaScript code for a specific tracking event"""
+    if not META_MODULES_AVAILABLE:
+        return jsonify({'error': 'Meta modules not available'}), 503
+
+    custom_data = request.args.to_dict()
+
+    # Convert string values to appropriate types
+    for key in ['value', 'num_items']:
+        if key in custom_data:
+            try:
+                custom_data[key] = float(custom_data[key])
+            except ValueError:
+                pass
+
+    code = pixel_generator.get_event_code(event_name, custom_data if custom_data else None)
+
+    return jsonify({
+        'event_name': event_name,
+        'custom_data': custom_data,
+        'code': code
+    })
+
+
+@app.route('/api/conversion/lead', methods=['POST'])
+def send_lead_conversion():
+    """
+    Send Lead conversion event to Meta Conversion API
+
+    Request body:
+    {
+        "email": "user@example.com",
+        "phone": "+31612345678",
+        "first_name": "John",
+        "content_name": "Kandidatentekort Lead",
+        "value": 50
+    }
+    """
+    if not META_MODULES_AVAILABLE:
+        return jsonify({'error': 'Meta modules not available'}), 503
+
+    try:
+        data = request.get_json()
+
+        user_data = UserData(
+            email=data.get('email'),
+            phone=data.get('phone'),
+            first_name=data.get('first_name'),
+            last_name=data.get('last_name'),
+            client_ip_address=request.headers.get('X-Forwarded-For', request.remote_addr),
+            client_user_agent=request.headers.get('User-Agent'),
+            fbc=request.cookies.get('_fbc'),
+            fbp=request.cookies.get('_fbp')
+        )
+
+        result = conversion_api.send_lead_event(
+            user_data=user_data,
+            content_name=data.get('content_name', 'Kandidatentekort Lead'),
+            value=data.get('value', 50)
+        )
+
+        return jsonify({
+            'status': 'success',
+            'result': result
+        })
+
+    except Exception as e:
+        logger.error(f"Lead conversion error: {str(e)}")
+        return jsonify({'error': str(e)}), 500
+
+
+@app.route('/api/conversion/assessment', methods=['POST'])
+def send_assessment_conversion():
+    """
+    Send Assessment conversion events to Meta Conversion API
+
+    Request body:
+    {
+        "email": "user@example.com",
+        "event": "start" | "complete",
+        "score": 75
+    }
+    """
+    if not META_MODULES_AVAILABLE:
+        return jsonify({'error': 'Meta modules not available'}), 503
+
+    try:
+        data = request.get_json()
+
+        user_data = UserData(
+            email=data.get('email'),
+            phone=data.get('phone'),
+            first_name=data.get('first_name'),
+            last_name=data.get('last_name'),
+            client_ip_address=request.headers.get('X-Forwarded-For', request.remote_addr),
+            client_user_agent=request.headers.get('User-Agent')
+        )
+
+        results = []
+
+        # Send InitiateCheckout (assessment started)
+        if data.get('event') == 'start':
+            result = conversion_api.send_assessment_start_event(user_data=user_data)
+            results.append({'event': 'InitiateCheckout', 'result': result})
+
+        # Send CompleteRegistration (assessment completed)
+        if data.get('event') == 'complete' or not data.get('event'):
+            result = conversion_api.send_assessment_complete_event(
+                user_data=user_data,
+                score=data.get('score')
+            )
+            results.append({'event': 'CompleteRegistration', 'result': result})
+
+            # Also send Lead event
+            lead_result = conversion_api.send_lead_event(
+                user_data=user_data,
+                content_name=data.get('assessment_type', 'Vacancy Assessment'),
+                value=data.get('value', 50)
+            )
+            results.append({'event': 'Lead', 'result': lead_result})
+
+        return jsonify({
+            'status': 'success',
+            'events_sent': results
+        })
+
+    except Exception as e:
+        logger.error(f"Assessment conversion error: {str(e)}")
+        return jsonify({'error': str(e)}), 500
+
+
+@app.route('/api/audiences', methods=['GET'])
+def get_audiences():
+    """Get all pre-defined Meta audience segments for campaigns"""
+    if not META_MODULES_AVAILABLE:
+        return jsonify({'error': 'Meta modules not available'}), 503
+
+    segments = audience_builder.get_all_segments()
+
+    return jsonify({
+        'status': 'success',
+        'segments': [
+            {
+                'name': s.name,
+                'description': s.description,
+                'segment_key': s.segment.value,
+                'estimated_reach': s.estimated_reach,
+                'recommended_budget_eur': s.recommended_budget / 100
+            }
+            for s in segments
+        ]
+    })
+
+
+@app.route('/api/templates', methods=['GET'])
+def get_campaign_templates():
+    """Get available Meta campaign templates"""
+    if not META_MODULES_AVAILABLE:
+        return jsonify({'error': 'Meta modules not available'}), 503
+
+    templates = CampaignTemplates.get_all_templates()
+
+    return jsonify({
+        'status': 'success',
+        'templates': [
+            {
+                'name': t.name,
+                'description': t.description,
+                'objective': t.objective.value,
+                'daily_budget_eur': t.daily_budget / 100,
+                'audience_segments': [s.value for s in t.audience_segments],
+                'ad_variants': len(t.ad_copy_variants)
+            }
+            for t in templates
+        ]
+    })
+
+
+@app.route('/test/meta-lead', methods=['POST'])
+def test_meta_lead():
+    """Test endpoint for simulating Meta lead processing"""
+    if not META_MODULES_AVAILABLE:
+        return jsonify({'error': 'Meta modules not available'}), 503
+
+    data = request.get_json() or {}
+
+    # Create test user data
+    user_data = UserData(
+        email=data.get('email', 'test@example.com'),
+        phone=data.get('phone', '+31612345678'),
+        first_name=data.get('first_name', 'Test'),
+        last_name=data.get('last_name', 'User')
+    )
+
+    results = []
+
+    # Test conversion events
+    if PixelConfig.ACCESS_TOKEN:
+        lead_result = conversion_api.send_lead_event(
+            user_data=user_data,
+            content_name='Test Lead',
+            value=50
+        )
+        results.append({'event': 'Lead', 'result': lead_result})
+    else:
+        results.append({'event': 'Lead', 'result': 'ACCESS_TOKEN not configured'})
+
+    return jsonify({
+        'status': 'success',
+        'test_data': {
+            'email': user_data.email,
+            'first_name': user_data.first_name
+        },
+        'conversion_results': results,
+        'message': 'Test completed. Check Meta Events Manager for events.'
+    })
+
+
+# ==============================================================================
 # MAIN
 # ==============================================================================
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
     debug = os.environ.get('DEBUG', 'false').lower() == 'true'
+
+    logger.info(f"Starting Kandidatentekort Automation Server on port {port}")
+    logger.info(f"Meta modules available: {META_MODULES_AVAILABLE}")
+    if META_MODULES_AVAILABLE:
+        logger.info(f"Pixel ID: {PixelConfig.PIXEL_ID}")
+
     app.run(host='0.0.0.0', port=port, debug=debug)
