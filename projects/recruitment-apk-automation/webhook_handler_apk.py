@@ -27,6 +27,9 @@ from typing import Dict, Any, Optional, List
 from flask import Flask, request, jsonify
 import requests
 
+# Import email automation service
+from email_automation_service import start_email_sequence
+
 # Initialize Flask app
 app = Flask(__name__)
 
@@ -136,6 +139,19 @@ def handle_typeform_webhook():
         # Send email with APK report
         email_sent = send_apk_email(assessment_data, apk_report)
 
+        # Start email automation sequence (runs in background thread)
+        if deal and email_sent:
+            deal_id = deal.get('id')
+            today = datetime.now().strftime("%Y-%m-%d")
+            start_email_sequence(
+                deal_id=deal_id,
+                to_email=assessment_data.get('email', ''),
+                first_name=assessment_data.get('first_name', ''),
+                company=assessment_data.get('company_name', ''),
+                apk_sent_date=today
+            )
+            logger.info(f"Email sequence started for deal {deal_id}")
+
         logger.info(f"Webhook processed successfully for {assessment_data.get('email')}")
 
         return jsonify({
@@ -144,7 +160,8 @@ def handle_typeform_webhook():
             'maturity_score': maturity_result['score'],
             'maturity_level': maturity_result['level'],
             'deal_id': deal.get('id') if deal else None,
-            'email_sent': email_sent
+            'email_sent': email_sent,
+            'email_sequence_started': bool(deal and email_sent)
         }), 200
 
     except Exception as e:
