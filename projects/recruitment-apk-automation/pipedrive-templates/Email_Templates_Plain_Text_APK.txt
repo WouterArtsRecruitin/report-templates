@@ -1,0 +1,298 @@
+================================================================================
+TRUST-FIRST EMAIL NURTURE CAMPAIGN - RECRUITMENT APK PIPELINE
+================================================================================
+
+Pipeline: Recruitment APK (id: 2)
+Typeform: https://form.typeform.com/to/cuGe3IEC
+Website: www.recruitmentapk.nl
+Netlify: https://recruitmentapkverbeterd.netlify.app/
+
+Kopieer deze teksten direct in Pipedrive Email Templates.
+Gebruik merge fields: {person.first_name}, {organization.name}
+
+================================================================================
+EMAIL 1: APK ONTVANGEN? (Dag 1)
+================================================================================
+
+ONDERWERP: Je Recruitment APK - alles goed ontvangen?
+
+---
+
+Hoi {person.first_name},
+
+Gisteren stuurde ik je de Recruitment APK - de complete analyse van jullie wervingsproces.
+
+Even een snelle check: is alles goed aangekomen?
+
+Als je vragen hebt over je score of de aanbevelingen - reply gerust op deze mail. Ik help je graag verder.
+
+Groeten,
+Wouter
+recruitmentapk.nl
+
+PS: Geen verkooppraatje vandaag - gewoon even checken of alles werkt.
+
+
+================================================================================
+EMAIL 2: AL BEKEKEN? (Dag 3)
+================================================================================
+
+ONDERWERP: Heb je de APK al kunnen bekijken?
+
+---
+
+Hoi {person.first_name},
+
+Even nieuwsgierig: heb je de Recruitment APK al kunnen doornemen?
+
+Ik hoor het graag als je ergens tegenaan loopt, bijvoorbeeld:
+
+- Vragen over je recruitment maturity score?
+- Onduidelijkheid over de verbeterpunten?
+- Hulp nodig bij de prioritering?
+
+Geen probleem - reply gewoon en ik denk met je mee.
+
+Groeten,
+Wouter
+
+Tip: De meeste bedrijven focussen eerst op de "quick wins" uit de APK - de punten die snel resultaat opleveren.
+
+
+================================================================================
+EMAIL 3: EERSTE STAPPEN? (Dag 5)
+================================================================================
+
+ONDERWERP: Ben je al ergens mee gestart?
+
+---
+
+Hoi {person.first_name},
+
+Het is nu een paar dagen geleden sinds je de Recruitment APK hebt ontvangen.
+
+Ik ben oprecht benieuwd: ben je al ergens mee aan de slag gegaan?
+
+---
+MAG IK JE IETS VRAGEN?
+
+Als je 2 minuten hebt, zou je me kunnen vertellen:
+
+1. Heb je de APK intern al gedeeld?
+2. Welk verbeterpunt pak je als eerste aan?
+3. Wat vond je het meest verrassend aan de uitkomst?
+
+Jouw feedback helpt me om de APK te verbeteren voor andere bedrijven.
+---
+
+Reply gewoon op deze mail - ik lees alles persoonlijk.
+
+Alvast bedankt,
+Wouter
+
+Nog niet aan toegekomen? Geen probleem - de APK blijft relevant. Bewaar hem voor wanneer het wel past.
+
+
+================================================================================
+EMAIL 4: TIP - TIME-TO-HIRE (Dag 8)
+================================================================================
+
+ONDERWERP: Recruitment tip: Time-to-hire halveren
+
+---
+
+Hoi {person.first_name},
+
+Deze week deel ik een tip die veel bedrijven over het hoofd zien:
+
+---
+JE TIME-TO-HIRE ZIT NIET IN DE SELECTIE, MAAR IN DE VOORKANT
+
+De gemiddelde time-to-hire in Nederland is 42 dagen. Maar wist je dat 60% van die tijd opgaat aan het vinden van kandidaten - niet aan het selecteren?
+
+Wat de snelste bedrijven doen:
+- Talent pools opbouwen VOOR de vacature ontstaat
+- Hiring managers trainen op snelle besluitvorming
+- Standaard response binnen 48 uur naar kandidaten
+
+Quick win:
+Meet eens hoelang kandidaten wachten tussen sollicitatie en eerste contact. Als dat meer dan 5 dagen is, verlies je de beste mensen.
+---
+
+Hoe snel schakelt jouw organisatie na een sollicitatie?
+
+Succes deze week,
+Wouter
+
+Volgende week: Waarom de candidate experience je employer brand bepaalt
+
+
+================================================================================
+EMAIL 5: TIP - CANDIDATE EXPERIENCE (Dag 11)
+================================================================================
+
+ONDERWERP: Recruitment tip: Candidate experience als geheim wapen
+
+---
+
+Hoi {person.first_name},
+
+"We hebben een negatieve Glassdoor review gekregen van een afgewezen kandidaat."
+
+Dat hoor ik vaker dan je denkt. Hier is wat de data zegt:
+
+---
+IMPACT VAN CANDIDATE EXPERIENCE:
+
+- 72% deelt slechte ervaringen met anderen
+- 52% stopt met kopen bij het bedrijf na slechte ervaring
+- 78% zou opnieuw solliciteren bij goede afwijzing
+
+Bron: Talent Board 2024
+---
+
+De oplossing is simpeler dan je denkt:
+
+- Stuur ALTIJD een persoonlijke afwijzing (geen standaardmail)
+- Geef binnen 1 week feedback na het laatste gesprek
+- Vraag afgewezen kandidaten om feedback over het proces
+- Behandel kandidaten zoals je klanten behandelt
+
+Groeten,
+Wouter
+
+Vragen? Reply gewoon op deze mail.
+
+
+================================================================================
+EMAIL 6: TIP - METEN = WETEN (Dag 14)
+================================================================================
+
+ONDERWERP: Recruitment tip: Meten = weten
+
+---
+
+Hoi {person.first_name},
+
+"We weten niet precies waar het misgaat in ons wervingsproces."
+
+Dat is logisch als je niet meet. Maar welke metrics zijn eigenlijk belangrijk?
+
+---
+DE 5 RECRUITMENT KPIs DIE ERTOE DOEN:
+
+1. Time-to-hire - Van vacature tot handtekening
+2. Quality of hire - Prestatie na 6/12 maanden
+3. Cost per hire - Totale kosten per aanname
+4. Source effectiveness - Welke kanalen leveren?
+5. Candidate satisfaction - NPS van sollicitanten
+
+Start simpel:
+Meet eerst alleen time-to-hire en source effectiveness. Dat geeft al 80% van de inzichten.
+---
+
+Welke van deze 5 meet jouw organisatie al? Reply en laat het me weten.
+
+Tot volgende week,
+Wouter
+
+Dit was de laatste tip in deze serie. Vond je ze nuttig? Laat het me weten.
+
+
+================================================================================
+EMAIL 7: GESPREK AANBOD (Dag 21)
+================================================================================
+
+ONDERWERP: Zullen we je APK samen doornemen?
+
+---
+
+Hoi {person.first_name},
+
+Het is nu drie weken geleden dat je de Recruitment APK ontving.
+
+Ik ben benieuwd: heb je al stappen kunnen zetten op basis van de uitkomsten? Of ligt het rapport nog op de stapel?
+
+---
+ZULLEN WE EVEN BELLEN?
+
+Geen verkooppraatje, gewoon een kort gesprek (30 min gratis) om je APK samen door te nemen.
+
+We kunnen het hebben over:
+- De belangrijkste verbeterpunten voor {organization.name}
+- Quick wins die je direct kunt implementeren
+- Hoe je draagvlak krijgt voor recruitment verbeteringen
+
+Plan hier een moment dat jou uitkomt:
+https://calendly.com/wouter-arts-/recruitment-apk-review
+---
+
+Geen zin of geen tijd? Helemaal prima - reply dan gewoon even met een update. Ik hoor graag hoe het gaat.
+
+Groeten,
+Wouter
+
+PS: Ik reageer ook gewoon op een reply - wat jou het makkelijkst is.
+
+
+================================================================================
+EMAIL 8: FINAL CHECK-IN (Dag 30)
+================================================================================
+
+ONDERWERP: Laatste check - hoe staat het met jullie recruitment?
+
+---
+
+Hoi {person.first_name},
+
+Een maand geleden verstuurde ik de Recruitment APK voor {organization.name}.
+
+Dit is mijn laatste mail in deze serie - daarna laat ik je met rust.
+
+Maar voor ik ga, ben ik nieuwsgierig:
+
+---
+HOE STAAT HET ERVOOR?
+
+A. We zijn aan de slag - al verbeteringen doorgevoerd!
+B. APK ligt klaar - maar nog geen tijd gehad
+C. Recruitment staat even on hold bij ons
+D. Ik wil graag sparren - laten we bellen
+
+Reply met A, B, C of D (of vertel gewoon je verhaal)
+---
+
+Hoe dan ook - succes met jullie recruitment. En mocht je in de toekomst weer een APK willen doen, of hulp nodig hebben bij de implementatie, je weet me te vinden.
+
+Groeten,
+Wouter
+recruitmentapk.nl
+
+---
+Contact: warts@recruitin.nl
+Nieuwe APK? https://recruitmentapk.nl
+
+
+================================================================================
+EINDE TEMPLATES
+================================================================================
+
+SAMENVATTING TIMING:
+- Email 1: Dag 1  - APK ontvangen?
+- Email 2: Dag 3  - Al bekeken?
+- Email 3: Dag 5  - Eerste stappen?
+- Email 4: Dag 8  - Tip: Time-to-hire
+- Email 5: Dag 11 - Tip: Candidate Experience
+- Email 6: Dag 14 - Tip: Meten = Weten
+- Email 7: Dag 21 - Gesprek aanbod
+- Email 8: Dag 30 - Final check-in
+
+MERGE FIELDS:
+- {person.first_name} = Voornaam
+- {organization.name} = Bedrijfsnaam
+
+VERSCHIL MET VACATURE ANALYSE PIPELINE:
+- Focus op recruitment PROCES verbetering (niet vacaturetekst)
+- Tips gaan over Time-to-hire, Candidate Experience, KPIs
+- CTA is "APK samen doornemen" (niet vacature feedback)
+- Langere gratis sessie aangeboden (30 min vs 15 min)
