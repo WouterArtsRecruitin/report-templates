@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "apollo": {
+      "command": "node",
+      "args": ["/Users/wouterarts/apollo-mcp-server/dist/index.js"],
+      "env": {}
+    }
+  }
+}
